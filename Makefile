@@ -3,6 +3,10 @@ export PATH := node_modules/.bin:$(PATH)
 .PHONY: build
 build: clean
 
+	eslint src/
+
+	jest
+
 	mkdir -p dist/js dist/less
 
 	browserify -t babelify ./src/js/index.js -o ./dist/js/index.js

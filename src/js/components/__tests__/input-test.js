@@ -31,10 +31,7 @@ describe('input', () => {
 
   it('should render input element', () => {
     let node = render();
-
     expect(node).toBe.ok;
-
-    expect(node.getAttribute('placeholder')).toBe('select here to type');
   });
 
   it('should listen to keyup event and send keypress to socket', () => {
