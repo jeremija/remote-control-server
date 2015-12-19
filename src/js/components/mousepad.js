@@ -1,12 +1,20 @@
 const React = require('react');
 const socket = require('../socket.js');
 
+const buttons = {
+  0: 'left',
+  1: 'middle',
+  2: 'right'
+};
+
 function onClick(event) {
-  socket.emit('click', { button: 'left', double: false });
+  let button = buttons[event.button] || 'left';
+  socket.emit('click', { button: button, double: false });
 }
 
 function onDblClick(event) {
-  socket.emit('click', { button: 'left', double: true });
+  let button = buttons[event.button] || 'left';
+  socket.emit('click', { button: button, double: true });
 }
 
 function mousepad({throttle}) {
@@ -51,7 +59,7 @@ function mousepad({throttle}) {
   return (
     <div className="mousepad"
       onClick={onClick}
-      onDblClick={onDblClick}
+      onDoubleClick={onDblClick}
       onMouseEnter={onMouseEnter}
       onMouseMove={onMouseMove}
       onTouchMove={onTouchMove}
