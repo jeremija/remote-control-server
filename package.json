@@ -8,7 +8,7 @@
     "remote-control-server": "./dist/index.js"
   },
   "scripts": {
-    "start": "node index.js",
+    "start": "node src/index.js",
     "test": "jest --coverage",
     "testify": "jest --watch",
     "lint": "eslint ./index.js ./src/js"
@@ -18,7 +18,6 @@
   "dependencies": {
     "express": "^4.13.3",
     "jade": "^1.11.0",
-    "npm-zepto": "^1.1.7",
     "react": "^0.14.3",
     "react-dom": "^0.14.3",
     "robotjs": "^0.3.6",
