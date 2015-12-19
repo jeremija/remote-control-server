@@ -9,7 +9,9 @@
   },
   "scripts": {
     "start": "node index.js",
-    "test": "jest"
+    "test": "jest --coverage",
+    "testify": "jest --watch",
+    "lint": "eslint ./index.js ./src/js"
   },
   "author": "",
   "license": "MIT",
