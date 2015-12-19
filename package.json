@@ -1,14 +1,17 @@
 {
-  "name": "mpvjs",
+  "name": "remote-control-server",
   "version": "1.0.0",
-  "description": "Creates a server for interacting with mpv binary",
-  "repository": "https://github.com/jeremija/node-mpv",
+  "description": "Remote control your PC from your web browser on your other PC or mobile device",
+  "repository": "https://github.com/jeremija/remote-control-server",
   "main": "index.js",
+  "bin": {
+    "remote-control-server": "./index.js"
+  },
   "scripts": {
     "start": "node index.js"
   },
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "browserify-middleware": "^7.0.0",
     "express": "^4.13.3",
