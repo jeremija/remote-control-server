@@ -1,6 +1,6 @@
 {
   "name": "remote-control-server",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "Remote control your PC from your web browser on your other PC or mobile device",
   "repository": "https://github.com/jeremija/remote-control-server",
   "main": "src/index.js",
