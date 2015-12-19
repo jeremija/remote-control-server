@@ -11,6 +11,10 @@ let path = require('path');
 let os = require('os');
 let robot = require('robotjs');
 
+browserify.settings({
+  transform: ['babelify']
+});
+
 let tempDir = path.join(os.tmpDir(), 'node-mpv-css-cache');
 let lastTitle = '(no title)';
 
