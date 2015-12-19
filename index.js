@@ -73,7 +73,9 @@ io.on('connection', function(socket) {
 });
 
 let port = process.env.PORT || 3000;
+let ifaces = os.networkInterfaces();
 http.listen(port, function() {
-  console.log('listening on http://*:' + port);
-  console.log('you can use http://localhost:' + port);
+  Object.keys(ifaces).forEach(ifname =>
+    ifaces[ifname].forEach(iface =>
+      console.log('listening on', iface.address, 'and port', port)));
 });
