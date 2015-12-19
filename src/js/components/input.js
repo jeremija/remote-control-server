@@ -17,7 +17,7 @@ function input({altKey, ctrlKey, shiftKey, metaKey}) {
 
   return (
     <input onKeyUp={onKeyUp}
-      placeholder="select here to type"
+      placeholder={String.fromCharCode(parseInt('e803', 16))}
       type="text"
     />);
 }

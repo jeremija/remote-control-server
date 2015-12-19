@@ -64,7 +64,10 @@ function mousepad({throttle}) {
       onMouseMove={onMouseMove}
       onTouchMove={onTouchMove}
       onTouchStart={onTouchStart}
-    />);
+    >
+      <span className="icon icon-mouse" />
+    </div>
+  );
 
 }
 
