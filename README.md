@@ -6,6 +6,8 @@ Supports mouse movements, clicking and keyboard input.
 
 Work in progress.
 
+![screenshot](screenshot.png)
+
 # install & run
 
 ```bash
