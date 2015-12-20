@@ -4,11 +4,12 @@ const React = require('react');
 const ReactDom = require('react-dom');
 const TestUtils = require('react-addons-test-utils');
 const Log = require('../log.js');
+const logStore = require('../../store/logStore.js');
 
 describe('log', () => {
   it('should render log entries', () => {
-    let logs = ['a', 'b'];
-    let c = TestUtils.renderIntoDocument(<div><Log logs={logs} /></div>);
+    logStore.getLogs.mockReturnValue(['a', 'b']);
+    let c = TestUtils.renderIntoDocument(<div><Log /></div>);
     let node = ReactDom.findDOMNode(c);
 
     let codes = node.querySelectorAll('code');

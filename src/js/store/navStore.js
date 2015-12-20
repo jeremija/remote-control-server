@@ -14,7 +14,7 @@ const items = [{
   value: 'keys'
 }, {
   icon: 'icon-logs',
-  value: 'logs'
+  value: 'log'
 }];
 const values = items.map(item => item.value);
 let active = values[0];

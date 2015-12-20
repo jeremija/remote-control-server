@@ -12,10 +12,10 @@ function app() {
 
   let panels = {
     mousepad: <Mousepad throttle="10" />,
-    logs: <Log />
+    log: <Log />
   };
 
-  let panel = panels[active];
+  let panel = panels[active] || <div className="blank" />;
 
   return (<div className="app">
     <Navbar />

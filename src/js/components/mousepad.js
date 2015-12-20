@@ -1,5 +1,6 @@
 const React = require('react');
 const socket = require('../socket.js');
+const log = require('../dispatcher/logDispatcher.js');
 
 const buttons = {
   0: 'left',
@@ -35,6 +36,7 @@ function mousepad({throttle}) {
 
     if (throttle && Date.now() - lastMouseSent < throttle) return;
 
+    log.dispatch({ type: 'add-entry', text: 'handleMouse ' + x + ',' + y});
     socket.emit('mousemove', {x, y});
     lastMouseSent = Date.now();
   }
