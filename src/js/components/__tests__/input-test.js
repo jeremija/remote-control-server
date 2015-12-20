@@ -15,15 +15,9 @@ describe('input', () => {
     socket.emit.mockClear();
   });
 
-  function render(props) {
-    props = props || {
-      altKey: false,
-      ctrlKey: false,
-      shiftKey: false,
-      metaKey: false
-    };
+  function render() {
     let component = TestUtils.renderIntoDocument(
-      <div> <Input {...props} /> </div>
+      <div> <Input /> </div>
     );
 
     return ReactDOM.findDOMNode(component).querySelector('input');
@@ -47,26 +41,6 @@ describe('input', () => {
       ctrl: false,
       shift: false,
       meta: false,
-      code: 65,
-      string: 'A'
-    });
-    expect(event.target.value).toBe('');
-  });
-
-  it('should use props for shift, meta, alt & ctrl keys', () => {
-    let event = { keyCode: 65, target: { value: 'A' } };
-    let node = render(
-      {altKey: true, metaKey: true, shiftKey: true, ctrlKey: true});
-
-    TestUtils.Simulate.keyUp(node, event);
-
-    expect(socket.emit.mock.calls.length).toBe(1);
-    expect(socket.emit.mock.calls[0][0]).toBe('keypress');
-    expect(socket.emit.mock.calls[0][1]).toEqual({
-      alt: true,
-      ctrl: true,
-      shift: true,
-      meta: true,
       code: 65,
       string: 'A'
     });
