@@ -36,7 +36,6 @@ function mousepad({throttle}) {
 
     if (throttle && Date.now() - lastMouseSent < throttle) return;
 
-    log.dispatch({ type: 'add-entry', text: 'handleMouse ' + x + ',' + y});
     socket.emit('mousemove', {x, y});
     lastMouseSent = Date.now();
   }
