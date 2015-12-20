@@ -7,7 +7,7 @@ function input({altKey, ctrlKey, shiftKey, metaKey}) {
     let ctrl = event.ctrlKey || ctrlKey || false;
     let shift = event.shiftKey || shiftKey || false;
     let meta = event.metaKey || metaKey || false;
-    let code = event.which || event.keyCode || false;
+    let code = event.which || event.keyCode;
     let string = event.target.value;
     event.target.value = '';
     socket.emit('keypress', {alt, ctrl, shift, meta, code, string});

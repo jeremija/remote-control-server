@@ -12,7 +12,7 @@ function onClick(event) {
   socket.emit('click', { button: button, double: false });
 }
 
-function onDblClick(event) {
+function onDoubleClick(event) {
   let button = buttons[event.button] || 'left';
   socket.emit('click', { button: button, double: true });
 }
@@ -33,15 +33,14 @@ function mousepad({throttle}) {
     lastX = posX;
     lastY = posY;
 
-    if (throttle && Date.now() - lastMouseSent < throttle) return false;
+    if (throttle && Date.now() - lastMouseSent < throttle) return;
 
     socket.emit('mousemove', {x, y});
     lastMouseSent = Date.now();
-    return false;
   }
 
   function onMouseMove({clientX, clientY}) {
-    return handleMouse(clientX, clientY);
+    handleMouse(clientX, clientY);
   }
 
   function onTouchStart(event) {
@@ -53,13 +52,13 @@ function mousepad({throttle}) {
   function onTouchMove(event) {
     event.preventDefault();
     let touch = event.touches[0];
-    return handleMouse(touch.clientX, touch.clientY);
+    handleMouse(touch.clientX, touch.clientY);
   }
 
   return (
     <div className="mousepad"
       onClick={onClick}
-      onDoubleClick={onDblClick}
+      onDoubleClick={onDoubleClick}
       onMouseEnter={onMouseEnter}
       onMouseMove={onMouseMove}
       onTouchMove={onTouchMove}

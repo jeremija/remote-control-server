@@ -23,6 +23,12 @@ describe('logStore', () => {
     expect(typeof handleAction).toBe('function');
   });
 
+  it('should not fail on unknown action type', () => {
+    handleAction({ type: 'bla' });
+    expect(listener.mock.calls.length).toBe(0);
+  });
+
+
   describe('add-entry', () => {
     it('should add log entry', () => {
       handleAction({ type: 'add-entry', text: 'my log entry' });

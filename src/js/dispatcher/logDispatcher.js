@@ -1,5 +1,5 @@
 const Dispatcher = require('flux').Dispatcher;
 
-const logDispatcher = new Dispatcher();
+const dispatcher = new Dispatcher();
 
-module.exports = logDispatcher;
+module.exports = dispatcher;
