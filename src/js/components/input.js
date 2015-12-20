@@ -16,10 +16,12 @@ function input({altKey, ctrlKey, shiftKey, metaKey}) {
   }
 
   return (
-    <input onKeyUp={onKeyUp}
-      placeholder={String.fromCharCode(parseInt('e803', 16))}
-      type="text"
-    />);
+    <div className="input">
+      <input onKeyUp={onKeyUp}
+        placeholder={String.fromCharCode(parseInt('e803', 16))}
+        type="text"
+      />
+    </div>);
 }
 
 module.exports = input;
