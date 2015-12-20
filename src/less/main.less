@@ -25,39 +25,62 @@ body {
   height: 100%;
 }
 
-.remote {
+.app {
   width: 100%;
   height: 100%;
+  display: flex;
+  flex-flow: column;
+
+  .navbar {
+    padding: 0;
+    margin: 0;
+
+    li {
+      display: inline-block;
+      padding: 0.5em;
+      padding-right: 0;
+      font-size: 32px;
+      cursor: pointer;
+      z-index: 1;
+    }
+
+    li.active {
+      color: white;
+    }
+  }
+
+  .panel() {
+    flex: 2;
+    overflow: auto;
+  }
 
   .mousepad {
-    width: 100%;
-    height: 100%;
+    .panel();
     position: relative;
 
     .icon {
       font-size: @icon-size;
+      margin-top: -@icon-size;
       position: absolute;
       text-align: center;
-      top: 40%;
+      top: 50%;
       left: 0;
       right: 0;
     }
   }
 
   input {
+    display: flex;
+    min-height: 30px;
+
     width: 100%;
-    display: block;
     background-color: @color-bg;
     border: none;
     border-top: 5px dashed lighten(@color-bg, 5%);
     padding: 0.5em;
     text-align: center;
     color: @color-fg;
-    position: fixed;
     font-size: 1.5em;
-    bottom: 0;
-    left: 0;
-    right: 0;
     font-family: "icons";
     font-size: @icon-size;
   }
