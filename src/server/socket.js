@@ -70,4 +70,12 @@ module.exports = function(socket, robot) {
     return false;
   });
 
+  socket.on('toggle-key', (key, state) => {
+    robot.keyToggle(key, state);
+  });
+
+  socket.on('toggle-button', (button, state) => {
+    robot.mouseToggle(state, button);
+  });
+
 };

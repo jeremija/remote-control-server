@@ -18,6 +18,7 @@ describe('socket', () => {
     robot.typeString.mockClear();
     robot.keyTap.mockClear();
     robot.keyToggle.mockClear();
+    robot.mouseToggle.mockClear();
   });
 
   function findHandler(name) {
@@ -140,6 +141,24 @@ describe('socket', () => {
       ['enter'],
       ['backspace']
     ]);
+  });
+
+  it('should add toggle-key handler', () => {
+    let handleToggleKey = findHandler('toggle-key');
+    expect(typeof handleToggleKey).toBe('function');
+
+    handleToggleKey('control', 'down');
+
+    expect(robot.keyToggle.mock.calls[0]).toEqual(['control', 'down']);
+  });
+
+  it('should add toggle-button handler', () => {
+    let handleToggleButton = findHandler('toggle-button');
+    expect(typeof handleToggleButton).toBe('function');
+
+    handleToggleButton('left', 'down');
+
+    expect(robot.mouseToggle.mock.calls[0]).toEqual(['down', 'left']);
   });
 
 });
