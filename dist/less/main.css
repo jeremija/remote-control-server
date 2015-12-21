@@ -110,19 +110,22 @@ body {
   flex-flow: column;
 }
 .app .navbar {
-  padding: 0;
+  padding: 0 0 0 0.25em;
   margin: 0;
 }
 .app .navbar li {
   display: inline-block;
-  padding: 0.5em;
-  padding-right: 0;
+  padding: 0.5em 0.25em;
   font-size: 32px;
   cursor: pointer;
   z-index: 1;
 }
 .app .navbar li.active {
   color: white;
+}
+.app .blank {
+  flex: 2;
+  overflow: auto;
 }
 .app .log {
   padding: 1em;
@@ -149,6 +152,23 @@ body {
   top: 50%;
   left: 0;
   right: 0;
+}
+.app .button-toggles {
+  text-align: center;
+}
+.app .button-toggles span {
+  user-select: none;
+  display: inline-block;
+  background-color: #222222;
+  border: none;
+  color: #666666;
+  margin-bottom: 0.5em;
+  font-size: 16px;
+  cursor: pointer;
+  padding: 0.5em;
+}
+.app .button-toggles span.active {
+  background-color: #2f2f2f;
 }
 .app input {
   display: flex;
