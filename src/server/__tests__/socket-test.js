@@ -56,6 +56,22 @@ describe('socket', () => {
     expect(robot.moveMouse.mock.calls[0][1]).toBe(39);
   });
 
+  it('should add scroll handler', () => {
+    let handleMouseMove = findHandler('mousemove');
+    expect(typeof handleMouseMove).toBe('function');
+    robot.getMousePos.mockReturnValue({ x: 15, y: 19 });
+
+    handleMouseMove({ x: 10, y: 20 }, true);
+
+    expect(robot.scrollMouse.mock.calls.length).toBe(1);
+    expect(robot.scrollMouse.mock.calls[0]).toEqual([5, 'down']);
+
+    handleMouseMove({ x: 10, y: 10 }, true);
+
+    expect(robot.scrollMouse.mock.calls.length).toBe(2);
+    expect(robot.scrollMouse.mock.calls[1]).toEqual([5, 'up']);
+  });
+
   it('should add keytap handler', () => {
     let handle = findHandler('keytap');
     expect(typeof handle).toBe('function');

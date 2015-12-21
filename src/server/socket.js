@@ -10,17 +10,32 @@ const keyMapping = {
   40: 'down'
 };
 
+
 module.exports = function(socket, robot) {
+
+  function moveMouse(pos) {
+    let mouse = robot.getMousePos();
+    let x = mouse.x + pos.x;
+    let y = mouse.y + pos.y;
+    robot.moveMouse(x, y);
+  }
+
+  function scrollMouse(pos) {
+    let mouse = robot.getMousePos();
+    let direction = pos.y - mouse.y > 0 ? 'down' : 'up';
+    robot.scrollMouse(5, direction);
+  }
 
   socket.on('keytap', key => {
     robot.keyTap(key);
   });
 
-  socket.on('mousemove', pos => {
-    let mouse = robot.getMousePos();
-    let x = mouse.x + pos.x;
-    let y = mouse.y + pos.y;
-    robot.moveMouse(x, y);
+  socket.on('mousemove', (pos, scroll) => {
+    if (!scroll) {
+      moveMouse(pos);
+      return;
+    }
+    scrollMouse(pos);
   });
 
   socket.on('click', params => {
