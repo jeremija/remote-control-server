@@ -11,9 +11,11 @@ const os = require('os');
 const handleSocket = require('./server/socket.js');
 
 app.set('view engine', 'jade');
+app.set('views', path.join(__dirname, 'views'));
+
+app.use('/res', express.static(path.join(__dirname, 'res')));
 
 if (path.basename(__dirname) === 'dist') {
-  app.set('views', path.join(__dirname, 'views'));
   app.use('/js', express.static(path.join(__dirname, 'js')));
   app.use('/less', express.static(path.join(__dirname, 'less')));
 } else {
@@ -23,7 +25,6 @@ if (path.basename(__dirname) === 'dist') {
     transform: ['babelify']
   });
 
-  app.set('views', path.join(__dirname, './views'));
   const tempDir = path.join(os.tmpDir(), 'node-mpv-css-cache');
   app.use('/js', browserify(path.join(__dirname, './js')));
   app.use('/less', less(path.join(__dirname, './less'), { dest: tempDir}));
