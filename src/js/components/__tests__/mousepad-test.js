@@ -78,7 +78,10 @@ describe('input', () => {
 
   it('should listen to onTouchStart and onTouchMove events', () => {
     let node = render();
-    let event1 = { touches: [{ clientX: 30, clientY: 50 }] };
+    let event1 = {
+      touches: [{ clientX: 30, clientY: 50 }],
+      preventDefault: jest.genMockFunction()
+    };
     let event2 = { touches: [{ clientX: 45, clientY: 32 }] };
 
     TestUtils.Simulate.touchStart(node, event1);
@@ -113,6 +116,39 @@ describe('input', () => {
     TestUtils.Simulate.touchMove(node, event2);
 
     expect(socket.emit.mock.calls.length).toBe(0);
+  });
+
+  it('should not fail onTouchEnd', () => {
+    let node = render();
+    TestUtils.Simulate.touchEnd(node);
+  });
+
+  it('should call event#preventDefault if no touch end', () => {
+    let node = render();
+    let event1 = {
+      touches: [{ clientX: 30, clientY: 50 }],
+      preventDefault: jest.genMockFunction()
+    };
+
+    TestUtils.Simulate.touchStart(node, event1);
+
+    expect(event1.preventDefault).not.toBeCalled();
+    jest.runAllTimers();
+    expect(event1.preventDefault).toBeCalled();
+  });
+
+  it('should not call event#preventDefault() if touch end', () => {
+    let node = render();
+    let event1 = {
+      touches: [{ clientX: 30, clientY: 50 }],
+      preventDefault: jest.genMockFunction()
+    };
+
+    TestUtils.Simulate.touchStart(node, event1);
+    TestUtils.Simulate.touchEnd(node);
+
+    jest.runAllTimers();
+    expect(event1.preventDefault).not.toBeCalled();
   });
 
   // it('should throttle touch move events', () => {
