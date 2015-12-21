@@ -104,19 +104,19 @@ describe('input', () => {
     expect(socket.emit.mock.calls.length).toBeLessThan(20);
   });
 
-  // it('should not throttle mouse move events when throttle is 0', () => {
-  //   let node = render({ throttle: 0 });
+  it('should not throttle mouse move events when throttle is 0', () => {
+    let node = render({ throttle: 0 });
 
-  //   let event1 = { clientX: 30, clientY: 50 };
-  //   TestUtils.Simulate.mouseEnter(node, event1);
+    let event1 = { clientX: 30, clientY: 50 };
+    TestUtils.Simulate.mouseEnter(node, event1);
 
-  //   for (let i = 0; i < 100; i++) {
-  //     let event2 = { clientX: 45, clientY: 32 };
-  //     TestUtils.Simulate.mouseMove(node, event2);
-  //   }
+    for (let i = 0; i < 100; i++) {
+      let event2 = { clientX: 45, clientY: 32 };
+      TestUtils.Simulate.mouseMove(node, event2);
+    }
 
-  //   expect(socket.emit.mock.calls.length).toEqual(100);
-  // });
+    expect(socket.emit.mock.calls.length).toEqual(100);
+  });
 
   it('should listen to onDragStart and onDragMove events');
 
