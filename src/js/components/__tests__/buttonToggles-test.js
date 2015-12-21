@@ -40,7 +40,7 @@ describe('buttonToggles', () => {
   it('should render button toggles element', () => {
     let node = render();
     expect(node).toBe.ok;
-    expect(node.className).toBe('toggle-buttons');
+    expect(node.className).toBe('button-toggles');
   });
 
   it('should emit socket event and toggle state on key click', () => {

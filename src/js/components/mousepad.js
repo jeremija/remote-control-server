@@ -1,6 +1,5 @@
 const React = require('react');
 const socket = require('../socket.js');
-const log = require('../dispatcher/logDispatcher.js');
 
 const buttons = {
   0: 'left',
@@ -27,7 +26,7 @@ function mousepad({throttle}) {
     lastY = clientY;
   }
 
-  function handleMouse(posX, posY) {
+  function handleMouse(posX, posY, scroll) {
     let x = posX - lastX;
     let y = posY - lastY;
 
@@ -36,7 +35,7 @@ function mousepad({throttle}) {
 
     if (throttle && Date.now() - lastMouseSent < throttle) return;
 
-    socket.emit('mousemove', {x, y});
+    socket.emit('mousemove', {x, y}, scroll);
     lastMouseSent = Date.now();
   }
 
@@ -53,7 +52,8 @@ function mousepad({throttle}) {
   function onTouchMove(event) {
     event.preventDefault();
     let touch = event.touches[0];
-    handleMouse(touch.clientX, touch.clientY);
+    let scroll = event.touches.length > 1;
+    handleMouse(touch.clientX, touch.clientY, scroll);
   }
 
   return (

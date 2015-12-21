@@ -18,6 +18,8 @@ require('../mousepad.js').mockImplementation(
 require('../input.js').mockImplementation(mock(<div className="input" />));
 require('../navbar.js').mockImplementation(mock(<div className="navbar" />));
 require('../log.js').mockImplementation(mock(<div className="log" />));
+require('../buttonToggles.js').mockImplementation(
+  mock(<div className="button-toggles" />));
 
 const App = require('../app.js');
 const navStore = require('../../store/navStore.js');
@@ -38,13 +40,14 @@ describe('app', () => {
 
   it('should have three children', () => {
     let node = render();
-    expect(node.children.length).toBe(3);
+    expect(node.children.length).toBe(4);
   });
 
   it('should have header and footer', () => {
     let node = render();
     expect(node.children[0].className).toBe('navbar');
-    expect(node.children[2].className).toBe('input');
+    expect(node.children[2].className).toBe('button-toggles');
+    expect(node.children[3].className).toBe('input');
   });
 
   it('should render blank panel by default', () => {

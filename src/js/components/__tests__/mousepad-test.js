@@ -87,6 +87,21 @@ describe('input', () => {
     expect(socket.emit.mock.calls.length).toBe(1);
     expect(socket.emit.mock.calls[0][0]).toBe('mousemove');
     expect(socket.emit.mock.calls[0][1]).toEqual({ x: 15, y: -18 });
+    expect(socket.emit.mock.calls[0][2]).toBe(false);
+  });
+
+  it('should listen to scroll touch events', () => {
+    let node = render();
+    let event1 = { touches: [{ clientX: 30, clientY: 50 }] };
+    let event2 = { touches: [{ clientX: 45, clientY: 32 }, {}] };
+
+    TestUtils.Simulate.touchStart(node, event1);
+    TestUtils.Simulate.touchMove(node, event2);
+
+    expect(socket.emit.mock.calls.length).toBe(1);
+    expect(socket.emit.mock.calls[0][0]).toBe('mousemove');
+    expect(socket.emit.mock.calls[0][1]).toEqual({ x: 15, y: -18 });
+    expect(socket.emit.mock.calls[0][2]).toBe(true);
   });
 
   it('should throttle touch move events', () => {
