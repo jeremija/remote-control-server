@@ -17,6 +17,7 @@
   "license": "MIT",
   "dependencies": {
     "express": "^4.13.3",
+    "flux": "^2.1.1",
     "jade": "^1.11.0",
     "react": "^0.14.3",
     "react-dom": "^0.14.3",

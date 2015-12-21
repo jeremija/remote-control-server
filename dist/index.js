@@ -23,13 +23,13 @@ if (path.basename(__dirname) === 'dist') {
     transform: ['babelify']
   });
 
-  app.set('views', path.join(__dirname, './src/views'));
+  app.set('views', path.join(__dirname, './views'));
   const tempDir = path.join(os.tmpDir(), 'node-mpv-css-cache');
-  app.use('/js', browserify(path.join(__dirname, './src/js')));
-  app.use('/less', less(path.join(__dirname, './src/less'), { dest: tempDir}));
+  app.use('/js', browserify(path.join(__dirname, './js')));
+  app.use('/less', less(path.join(__dirname, './less'), { dest: tempDir}));
   app.use('/less', express.static(tempDir));
   app.use('/less/fonts', express.static(
-    path.join(__dirname, './src/less/fonts')));
+    path.join(__dirname, './less/fonts')));
 }
 
 app.get('/', (req, res) => res.render('index'));

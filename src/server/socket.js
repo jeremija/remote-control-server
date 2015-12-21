@@ -10,17 +10,31 @@ const keyMapping = {
   40: 'down'
 };
 
+
 module.exports = function(socket, robot) {
+
+  function moveMouse(pos) {
+    let mouse = robot.getMousePos();
+    let x = mouse.x + pos.x;
+    let y = mouse.y + pos.y;
+    robot.moveMouse(x, y);
+  }
+
+  function scrollMouse(pos) {
+    let direction = pos.y > 0 ? 'down' : 'up';
+    robot.scrollMouse(1, direction);
+  }
 
   socket.on('keytap', key => {
     robot.keyTap(key);
   });
 
-  socket.on('mousemove', pos => {
-    let mouse = robot.getMousePos();
-    let x = mouse.x + pos.x;
-    let y = mouse.y + pos.y;
-    robot.moveMouse(x, y);
+  socket.on('mousemove', (pos, scroll) => {
+    if (!scroll) {
+      moveMouse(pos);
+      return;
+    }
+    scrollMouse(pos);
   });
 
   socket.on('click', params => {
@@ -53,6 +67,15 @@ module.exports = function(socket, robot) {
     if (shift) robot.keyToggle('shift', 'up');
     if (meta) robot.keyToggle('command', 'up');
     return false;
+  });
+
+  socket.on('toggle-key', (key, state) => {
+    if (key === 'meta') key = 'command';
+    robot.keyToggle(key, state);
+  });
+
+  socket.on('toggle-button', (button, state) => {
+    robot.mouseToggle(state, button);
   });
 
 };
