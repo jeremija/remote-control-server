@@ -20,7 +20,6 @@ function onDoubleClick(event) {
 
 function mousepad({throttle}) {
   let lastX, lastY;
-  // let lastMouseSent = Date.now();
 
   function onMouseEnter({clientX, clientY}) {
     lastX = clientX;
@@ -36,20 +35,27 @@ function mousepad({throttle}) {
     lastX = posX;
     lastY = posY;
 
-    // if (throttle && Date.now() - lastMouseSent < throttle) return;
-
     socket.emit('mousemove', {x, y}, scroll);
-    // lastMouseSent = Date.now();
   }
 
   function onMouseMove({clientX, clientY}) {
     handleMouse(clientX, clientY);
   }
 
+  let timeout;
+
   function onTouchStart(event) {
+    event.persist();
     let touch = event.touches[0];
     lastX = touch.clientX;
     lastY = touch.clientY;
+
+    clearTimeout(timeout);
+    timeout = setTimeout(() => event.preventDefault(), 50);
+  }
+
+  function onTouchEnd() {
+    clearTimeout(timeout);
   }
 
   function _onTouchMove(event) {
@@ -67,6 +73,7 @@ function mousepad({throttle}) {
       onDoubleClick={onDoubleClick}
       onMouseEnter={onMouseEnter}
       onMouseMove={onMouseMove}
+      onTouchEnd={onTouchEnd}
       onTouchMove={onTouchMove}
       onTouchStart={onTouchStart}
     >

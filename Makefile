@@ -13,11 +13,11 @@ build: clean
 
 	lessc ./src/less/main.less ./dist/less/main.css
 
-	cp -r ./src/less/fonts ./dist/less/fonts
-	cp -r ./src/views ./dist/views
-
 	cp ./src/index.js ./dist/index.js
 	cp -r ./src/server ./dist/server
+	cp -r ./src/less/fonts ./dist/less/fonts
+	cp -r ./src/views ./dist/views
+	cp -r ./src/res ./dist/res
 
 .PHONY: clean
 clean:
