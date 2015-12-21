@@ -1,4 +1,5 @@
 export PATH := node_modules/.bin:$(PATH)
+SHELL=/bin/bash
 
 .PHONY: build
 build: clean
