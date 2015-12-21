@@ -1,5 +1,6 @@
 const dispatcher = require('../dispatcher/keyDispatcher.js');
 const EventEmitter = require('events');
+const socket = require('../socket.js');
 
 const emitter = new EventEmitter();
 
@@ -23,11 +24,13 @@ const handlers = {
   'toggle-button': ({ button }) => {
     let state = buttonStates[button];
     if (state === undefined) return;
+    socket.emit('toggle-button', button, state ? 'up' : 'down');
     buttonStates[button] = !state;
   },
   'toggle-key': ({ key }) => {
     let state = keyStates[key];
     if (state === undefined) return;
+    socket.emit('toggle-key', key, state ? 'up' : 'down');
     keyStates[key] = !state;
   }
 };

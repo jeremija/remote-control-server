@@ -1,7 +1,6 @@
 jest.dontMock('../buttonToggles.js');
 jest.dontMock('bufferutil');
 
-const socket = require('../../socket.js');
 const keyStore = require('../../store/keyStore.js');
 const keyDispatcher = require('../../dispatcher/keyDispatcher.js');
 
@@ -25,7 +24,6 @@ describe('buttonToggles', () => {
       right: true,
       middle: false
     });
-    socket.emit.mockClear();
     keyDispatcher.dispatch.mockClear();
   });
 
@@ -43,12 +41,8 @@ describe('buttonToggles', () => {
     expect(node.className).toBe('button-toggles');
   });
 
-  it('should emit socket event and toggle state on key click', () => {
+  it('should toggle state on key click', () => {
     let node = render();
-    let expectedStates = {
-      '.control': 'down',
-      '.alt': 'up'
-    };
     ['.control', '.alt'].forEach((className, index) => {
       let name = className.substring(1);
       TestUtils.Simulate.click(node.querySelector(className));
@@ -57,19 +51,11 @@ describe('buttonToggles', () => {
       expect(keyDispatcher.dispatch.mock.calls[index][0]).toEqual({
         type: 'toggle-key', key: name
       });
-
-      expect(socket.emit.mock.calls.length).toBe(index + 1);
-      expect(socket.emit.mock.calls[index]).toEqual(
-        ['toggle-key', name, expectedStates[className]]);
     });
   });
 
   it('should emit socket event and toggle state on btn click', () => {
     let node = render();
-    let expectedStates = {
-      '.left': 'down',
-      '.right': 'up'
-    };
     ['.left', '.right'].forEach((className, index) => {
       let name = className.substring(1);
       TestUtils.Simulate.click(node.querySelector(className));
@@ -78,10 +64,6 @@ describe('buttonToggles', () => {
       expect(keyDispatcher.dispatch.mock.calls[index][0]).toEqual({
         type: 'toggle-button', button: name
       });
-
-      expect(socket.emit.mock.calls.length).toBe(index + 1);
-      expect(socket.emit.mock.calls[index]).toEqual(
-        ['toggle-button', name, expectedStates[className]]);
     });
   });
 });

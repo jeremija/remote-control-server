@@ -1,6 +1,8 @@
 jest.dontMock('../keyStore.js');
 jest.dontMock('events');
+jest.dontMock('bufferutil');
 
+const socket = require('../../socket.js');
 const dispatcher = require('../../dispatcher/keyDispatcher.js');
 const keyStore = require('../keyStore.js');
 
@@ -12,6 +14,7 @@ describe('keyStore', () => {
   beforeEach(() => {
     onChange.mockClear();
     keyStore.addListener(onChange);
+    socket.emit.mockClear();
   });
   afterEach(() => keyStore.removeListener(onChange));
 
@@ -48,6 +51,10 @@ describe('keyStore', () => {
   it('should handle "toggle-key" action', () => {
     handleAction({ type: 'toggle-key', key: 'control' });
 
+    expect(socket.emit.mock.calls.length).toBe(1);
+    expect(socket.emit.mock.calls[0]).toEqual(
+     ['toggle-key', 'control', 'down']);
+
     expect(onChange.mock.calls.length).toBe(1);
     expect(keyStore.getKeyStates()).toEqual({
       control: true,
@@ -56,7 +63,12 @@ describe('keyStore', () => {
       meta: false
     });
 
+
     handleAction({ type: 'toggle-key', key: 'control' });
+
+    expect(socket.emit.mock.calls.length).toBe(2);
+    expect(socket.emit.mock.calls[1]).toEqual(
+     ['toggle-key', 'control', 'up']);
 
     expect(onChange.mock.calls.length).toBe(2);
     expect(keyStore.getKeyStates()).toEqual({
@@ -70,6 +82,10 @@ describe('keyStore', () => {
   it('should handle "toggle-button" action', () => {
     handleAction({ type: 'toggle-button', button: 'left' });
 
+    expect(socket.emit.mock.calls.length).toBe(1);
+    expect(socket.emit.mock.calls[0]).toEqual(
+     ['toggle-button', 'left', 'down']);
+
     expect(onChange.mock.calls.length).toBe(1);
     expect(keyStore.getButtonStates()).toEqual({
       left: true,
@@ -78,6 +94,10 @@ describe('keyStore', () => {
     });
 
     handleAction({ type: 'toggle-button', button: 'left' });
+
+    expect(socket.emit.mock.calls.length).toBe(2);
+    expect(socket.emit.mock.calls[1]).toEqual(
+     ['toggle-button', 'left', 'up']);
 
     expect(onChange.mock.calls.length).toBe(2);
     expect(keyStore.getButtonStates()).toEqual({
