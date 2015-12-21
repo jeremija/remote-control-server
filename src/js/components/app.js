@@ -4,6 +4,7 @@ const Mousepad = require('./mousepad.js');
 const Input = require('./input.js');
 const Log = require('./log.js');
 const Navbar = require('./navbar.js');
+const ButtonToggles = require('./buttonToggles.js');
 
 const navStore = require('../store/navStore.js');
 
@@ -20,6 +21,7 @@ function app() {
   return (<div className="app">
     <Navbar />
     {panel}
+    <ButtonToggles />
     <Input />
   </div>);
 }

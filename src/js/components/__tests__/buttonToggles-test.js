@@ -40,7 +40,7 @@ describe('buttonToggles', () => {
   it('should render button toggles element', () => {
     let node = render();
     expect(node).toBe.ok;
-    expect(node.className).toBe('button-toggles');
+    expect(node.className).toBe('toggle-buttons');
   });
 
   it('should emit socket event and toggle state on key click', () => {
@@ -55,12 +55,12 @@ describe('buttonToggles', () => {
 
       expect(keyDispatcher.dispatch.mock.calls.length).toBe(index + 1);
       expect(keyDispatcher.dispatch.mock.calls[index][0]).toEqual({
-        type: 'key-toggle', key: name
+        type: 'toggle-key', key: name
       });
 
       expect(socket.emit.mock.calls.length).toBe(index + 1);
       expect(socket.emit.mock.calls[index]).toEqual(
-        ['key-toggle', name, expectedStates[className]]);
+        ['toggle-key', name, expectedStates[className]]);
     });
   });
 
@@ -76,12 +76,12 @@ describe('buttonToggles', () => {
 
       expect(keyDispatcher.dispatch.mock.calls.length).toBe(index + 1);
       expect(keyDispatcher.dispatch.mock.calls[index][0]).toEqual({
-        type: 'button-toggle', button: name
+        type: 'toggle-button', button: name
       });
 
       expect(socket.emit.mock.calls.length).toBe(index + 1);
       expect(socket.emit.mock.calls[index]).toEqual(
-        ['button-toggle', name, expectedStates[className]]);
+        ['toggle-button', name, expectedStates[className]]);
     });
   });
 });

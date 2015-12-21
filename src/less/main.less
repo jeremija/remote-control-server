@@ -81,6 +81,23 @@ body {
     }
   }
 
+  .button-toggles {
+    text-align: center;
+    button {
+      background-color: @color-bg;
+      border: none;
+      color: @color-fg;
+      margin-bottom: 0.5em;
+      font-size: 18px;
+      cursor: pointer;
+      padding: 0.5em;
+      margin-right: 0.5em;
+    }
+    button.active {
+      background-color: lighten(@color-bg, 5%);
+    }
+  }
+
   input {
     display: flex;
     min-height: 30px;

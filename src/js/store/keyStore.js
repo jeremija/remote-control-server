@@ -13,7 +13,7 @@ const buttonStates = {
 };
 
 const keyStates = {
-  ctrl: false,
+  control: false,
   alt: false,
   shift: false,
   meta: false

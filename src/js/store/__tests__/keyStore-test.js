@@ -17,7 +17,7 @@ describe('keyStore', () => {
 
   it('should hold key and button states', () => {
     expect(keyStore.getKeyStates()).toEqual({
-      ctrl: false,
+      control: false,
       alt: false,
       shift: false,
       meta: false
@@ -46,21 +46,21 @@ describe('keyStore', () => {
   });
 
   it('should handle "toggle-key" action', () => {
-    handleAction({ type: 'toggle-key', key: 'ctrl' });
+    handleAction({ type: 'toggle-key', key: 'control' });
 
     expect(onChange.mock.calls.length).toBe(1);
     expect(keyStore.getKeyStates()).toEqual({
-      ctrl: true,
+      control: true,
       alt: false,
       shift: false,
       meta: false
     });
 
-    handleAction({ type: 'toggle-key', key: 'ctrl' });
+    handleAction({ type: 'toggle-key', key: 'control' });
 
     expect(onChange.mock.calls.length).toBe(2);
     expect(keyStore.getKeyStates()).toEqual({
-      ctrl: false,
+      control: false,
       alt: false,
       shift: false,
       meta: false
