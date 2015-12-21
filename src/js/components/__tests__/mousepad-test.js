@@ -104,35 +104,46 @@ describe('input', () => {
     expect(socket.emit.mock.calls[0][2]).toBe(true);
   });
 
-  it('should throttle touch move events', () => {
-    let node = render({ throttle: 5 });
+  it('should ignore scroll where diff < 5px', () => {
+    let node = render();
+    let event1 = { touches: [{ clientX: 30, clientY: 30 }] };
+    let event2 = { touches: [{ clientX: 45, clientY: 28 }, {}] };
 
-    let event1 = { touches: [{ clientX: 30, clientY: 50 }] };
     TestUtils.Simulate.touchStart(node, event1);
+    TestUtils.Simulate.touchMove(node, event2);
 
-    for (let i = 0; i < 100; i++) {
-      let event2 = { touches: [{ clientX: 45, clientY: 32 }] };
-      TestUtils.Simulate.touchMove(node, event2);
-    }
-
-    expect(socket.emit.mock.calls.length).toBeGreaterThan(0);
-    expect(socket.emit.mock.calls.length).toBeLessThan(20);
+    expect(socket.emit.mock.calls.length).toBe(0);
   });
 
-  it('should not throttle mouse move events when throttle is 0', () => {
-    let node = render({ throttle: 0 });
+  // it('should throttle touch move events', () => {
+  //   let node = render({ throttle: 5 });
 
-    let event1 = { clientX: 30, clientY: 50 };
-    TestUtils.Simulate.mouseEnter(node, event1);
+  //   let event1 = { touches: [{ clientX: 30, clientY: 50 }] };
+  //   TestUtils.Simulate.touchStart(node, event1);
 
-    for (let i = 0; i < 100; i++) {
-      let event2 = { clientX: 45, clientY: 32 };
-      TestUtils.Simulate.mouseMove(node, event2);
-    }
+  //   for (let i = 0; i < 100; i++) {
+  //     let event2 = { touches: [{ clientX: 45, clientY: 32 }] };
+  //     TestUtils.Simulate.touchMove(node, event2);
+  //   }
 
-    expect(socket.emit.mock.calls.length).toEqual(100);
-  });
+  //   expect(socket.emit.mock.calls.length).toBeGreaterThan(0);
+  //   expect(socket.emit.mock.calls.length).toBeLessThan(20);
+  // });
 
-  it('should listen to onDragStart and onDragMove events');
+  // it('should not throttle mouse move events when throttle is 0', () => {
+  //   let node = render({ throttle: 0 });
+
+  //   let event1 = { clientX: 30, clientY: 50 };
+  //   TestUtils.Simulate.mouseEnter(node, event1);
+
+  //   for (let i = 0; i < 100; i++) {
+  //     let event2 = { clientX: 45, clientY: 32 };
+  //     TestUtils.Simulate.mouseMove(node, event2);
+  //   }
+
+  //   expect(socket.emit.mock.calls.length).toEqual(100);
+  // });
+
+  // it('should listen to onDragStart and onDragMove events');
 
 });

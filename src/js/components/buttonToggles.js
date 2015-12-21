@@ -14,9 +14,9 @@ function buttonToggles() {
     function onClick() {
       keyDispatcher.dispatch({ type: 'toggle-button', button: button});
     }
-    return (<button className={className} key={i} onClick={onClick}>
+    return (<span className={className} key={i} onClick={onClick}>
       {button}
-    </button>);
+    </span>);
   });
 
   let keys = ['control', 'shift', 'alt', 'meta'].map((key, i) => {
@@ -25,9 +25,9 @@ function buttonToggles() {
     function onClick() {
       keyDispatcher.dispatch({ type: 'toggle-key', key: key});
     }
-    return (<button className={className} key={i} onClick={onClick}>
+    return (<span className={className} key={i} onClick={onClick}>
       {key}
-    </button>);
+    </span>);
   });
 
   return (<div className="button-toggles">

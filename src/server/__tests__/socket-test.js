@@ -60,17 +60,16 @@ describe('socket', () => {
   it('should add scroll handler', () => {
     let handleMouseMove = findHandler('mousemove');
     expect(typeof handleMouseMove).toBe('function');
-    robot.getMousePos.mockReturnValue({ x: 15, y: 19 });
-
-    handleMouseMove({ x: 10, y: 20 }, true);
-
-    expect(robot.scrollMouse.mock.calls.length).toBe(1);
-    expect(robot.scrollMouse.mock.calls[0]).toEqual([5, 'down']);
 
     handleMouseMove({ x: 10, y: 10 }, true);
 
+    expect(robot.scrollMouse.mock.calls.length).toBe(1);
+    expect(robot.scrollMouse.mock.calls[0]).toEqual([1, 'down']);
+
+    handleMouseMove({ x: 10, y: -10 }, true);
+
     expect(robot.scrollMouse.mock.calls.length).toBe(2);
-    expect(robot.scrollMouse.mock.calls[1]).toEqual([5, 'up']);
+    expect(robot.scrollMouse.mock.calls[1]).toEqual([1, 'up']);
   });
 
   it('should add keytap handler', () => {
@@ -150,6 +149,15 @@ describe('socket', () => {
     handleToggleKey('control', 'down');
 
     expect(robot.keyToggle.mock.calls[0]).toEqual(['control', 'down']);
+  });
+
+  it('should rename meta key to command', () => {
+    let handleToggleKey = findHandler('toggle-key');
+    expect(typeof handleToggleKey).toBe('function');
+
+    handleToggleKey('meta', 'down');
+
+    expect(robot.keyToggle.mock.calls[0]).toEqual(['command', 'down']);
   });
 
   it('should add toggle-button handler', () => {

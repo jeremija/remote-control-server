@@ -1,5 +1,6 @@
 const React = require('react');
 const socket = require('../socket.js');
+const _ = require('underscore');
 
 const buttons = {
   0: 'left',
@@ -19,7 +20,7 @@ function onDoubleClick(event) {
 
 function mousepad({throttle}) {
   let lastX, lastY;
-  let lastMouseSent = Date.now();
+  // let lastMouseSent = Date.now();
 
   function onMouseEnter({clientX, clientY}) {
     lastX = clientX;
@@ -30,13 +31,15 @@ function mousepad({throttle}) {
     let x = posX - lastX;
     let y = posY - lastY;
 
+    if (scroll && Math.abs(y) < 5) return;
+
     lastX = posX;
     lastY = posY;
 
-    if (throttle && Date.now() - lastMouseSent < throttle) return;
+    // if (throttle && Date.now() - lastMouseSent < throttle) return;
 
     socket.emit('mousemove', {x, y}, scroll);
-    lastMouseSent = Date.now();
+    // lastMouseSent = Date.now();
   }
 
   function onMouseMove({clientX, clientY}) {
@@ -49,12 +52,14 @@ function mousepad({throttle}) {
     lastY = touch.clientY;
   }
 
-  function onTouchMove(event) {
+  function _onTouchMove(event) {
     event.preventDefault();
     let touch = event.touches[0];
     let scroll = event.touches.length > 1;
     handleMouse(touch.clientX, touch.clientY, scroll);
   }
+
+  const onTouchMove = _.throttle(_onTouchMove, 5);
 
   return (
     <div className="mousepad"

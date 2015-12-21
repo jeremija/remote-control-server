@@ -21,9 +21,8 @@ module.exports = function(socket, robot) {
   }
 
   function scrollMouse(pos) {
-    let mouse = robot.getMousePos();
-    let direction = pos.y - mouse.y > 0 ? 'down' : 'up';
-    robot.scrollMouse(5, direction);
+    let direction = pos.y > 0 ? 'down' : 'up';
+    robot.scrollMouse(1, direction);
   }
 
   socket.on('keytap', key => {
@@ -71,6 +70,7 @@ module.exports = function(socket, robot) {
   });
 
   socket.on('toggle-key', (key, state) => {
+    if (key === 'meta') key = 'command';
     robot.keyToggle(key, state);
   });
 

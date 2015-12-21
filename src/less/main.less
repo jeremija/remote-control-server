@@ -32,13 +32,12 @@ body {
   flex-flow: column;
 
   .navbar {
-    padding: 0;
+    padding: 0 0 0 0.25em;
     margin: 0;
 
     li {
       display: inline-block;
-      padding: 0.5em;
-      padding-right: 0;
+      padding: 0.5em 0.25em;
       font-size: 32px;
       cursor: pointer;
       z-index: 1;
@@ -52,6 +51,10 @@ body {
   .panel() {
     flex: 2;
     overflow: auto;
+  }
+
+  .blank {
+    .panel();
   }
 
   .log {
@@ -83,17 +86,18 @@ body {
 
   .button-toggles {
     text-align: center;
-    button {
+    span {
+      user-select: none;
+      display: inline-block;
       background-color: @color-bg;
       border: none;
       color: @color-fg;
       margin-bottom: 0.5em;
-      font-size: 18px;
+      font-size: 16px;
       cursor: pointer;
       padding: 0.5em;
-      margin-right: 0.5em;
     }
-    button.active {
+    span.active {
       background-color: lighten(@color-bg, 5%);
     }
   }
