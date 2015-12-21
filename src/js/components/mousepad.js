@@ -46,10 +46,20 @@ function mousepad({throttle}) {
     handleMouse(clientX, clientY);
   }
 
+  let timeout;
+
   function onTouchStart(event) {
     let touch = event.touches[0];
     lastX = touch.clientX;
     lastY = touch.clientY;
+
+    clearTimeout(timeout);
+    // event.preventDefault();
+    timeout = setTimeout(() => event.preventDefault(), 50);
+  }
+
+  function onTouchEnd(event) {
+    clearTimeout(timeout);
   }
 
   function _onTouchMove(event) {
@@ -67,6 +77,7 @@ function mousepad({throttle}) {
       onDoubleClick={onDoubleClick}
       onMouseEnter={onMouseEnter}
       onMouseMove={onMouseMove}
+      onTouchEnd={onTouchEnd}
       onTouchMove={onTouchMove}
       onTouchStart={onTouchStart}
     >
