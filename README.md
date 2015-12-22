@@ -1,5 +1,7 @@
 # Remote Control Server
 
+[![Build Status](https://travis-ci.org/jeremija/remote-control-server.svg?branch=master)](https://travis-ci.org/jeremija/remote-control-server)
+
 Remote control your PC from your web browser on your other PC or mobile device.
 
 Supports mouse movements, scrolling, clicking and keyboard input.

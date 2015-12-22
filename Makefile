@@ -6,7 +6,7 @@ build: clean
 
 	eslint src/
 
-	jest
+	jest --coverage
 
 	mkdir -p dist/js dist/less
 
