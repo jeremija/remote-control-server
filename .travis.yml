@@ -4,6 +4,8 @@ node_js:
 script: make
 env:
   - CXX=g++-4.8
+notifications:
+  email: false
 addons:
   apt:
     sources:
