@@ -29,8 +29,8 @@ describe('store', () => {
   });
 
   it('should handle "nav" action', () => {
-    handleAction({ type: 'nav', value: 'keys' });
-    expect(store.getActive()).toBe('keys');
+    handleAction({ type: 'nav', value: 'arrows' });
+    expect(store.getActive()).toBe('arrows');
     expect(onChange.mock.calls.length).toBe(1);
   });
 

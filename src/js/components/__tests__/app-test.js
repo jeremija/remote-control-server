@@ -18,6 +18,7 @@ require('../mousepad.js').mockImplementation(
 require('../input.js').mockImplementation(mock(<div className="input" />));
 require('../navbar.js').mockImplementation(mock(<div className="navbar" />));
 require('../log.js').mockImplementation(mock(<div className="log" />));
+require('../arrows.js').mockImplementation(mock(<div className="arrows" />));
 require('../buttonToggles.js').mockImplementation(
   mock(<div className="button-toggles" />));
 
@@ -58,6 +59,11 @@ describe('app', () => {
   it('should render mousepad panel when navStore.active == "mousepad"', () => {
     let node = render('mousepad');
     expect(node.children[1].className).toBe('mousepad');
+  });
+
+  it('should render mousepad panel when navStore.active == "arrows"', () => {
+    let node = render('arrows');
+    expect(node.children[1].className).toBe('arrows');
   });
 
   it('should render log panel when navStore.active == "log"', () => {

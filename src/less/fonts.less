@@ -1,25 +1,23 @@
 @font-face {
   font-family: 'icons';
-  src: url('./fonts/icons.eot?52264147');
-  src: url('./fonts/icons.eot?52264147#iefix') format('embedded-opentype'),
-       url('./fonts/icons.woff?52264147') format('woff'),
-       url('./fonts/icons.ttf?52264147') format('truetype'),
-       url('./fonts/icons.svg?52264147#icons') format('svg');
+  src: url('./fonts/icons.eot?37351711');
+  src: url('./fonts/icons.eot?37351711#iefix') format('embedded-opentype'),
+       url('./fonts/icons.woff?37351711') format('woff'),
+       url('./fonts/icons.ttf?37351711') format('truetype'),
+       url('./fonts/icons.svg?37351711#icons') format('svg');
   font-weight: normal;
   font-style: normal;
 }
-/* Chrome hack: SVG is rendered more smooth in Windozze. 100% magic, uncomment if you need it. */
-/* Note, that will break hinting! In other OS-es font will be not as sharp as it could be */
-/*
-@media screen and (-webkit-min-device-pixel-ratio:0) {
-  @font-face {
-    font-family: 'icons';
-    src: url('../font/icons.svg?52264147#icons') format('svg');
-  }
-}
-*/
+// Chrome hack: SVG is rendered more smooth in Windozze. 100% magic, uncomment if you need it.
+// Note, that will break hinting! In other OS-es font will be not as sharp as it could be
+// @media screen and (-webkit-min-device-pixel-ratio:0) {
+//   @font-face {
+//     font-family: 'icons';
+//     src: url('../font/icons.svg?37351711#icons') format('svg');
+//   }
+// }
 
- [class^="icon-"]:before, [class*=" icon-"]:before {
+[class^="icon-"]:before, [class*=" icon-"]:before {
   font-family: "icons";
   font-style: normal;
   font-weight: normal;
@@ -54,17 +52,19 @@
   /* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); */
 }
 
-.icon-down-open-big:before { content: '\e800'; }
-.icon-down-circle:before { content: '\e801'; }
-.icon-mouse:before { content: '\e802'; }
-.icon-keyboard:before { content: '\e803'; }
-.icon-left-circle:before { content: '\e804'; }
-.icon-up-circle:before { content: '\e805'; }
-.icon-right-circle:before { content: '\e806'; }
-.icon-arrows:before { content: '\e807'; }
-.icon-up-hand:before { content: '\e808'; }
-.icon-ok-circle:before { content: '\e809'; }
-.icon-cancel-circle:before { content: '\e80a'; }
-.icon-left-open-big:before { content: '\e81d'; }
-.icon-right-open-big:before { content: '\e81e'; }
-.icon-up-open-big:before { content: '\e81f'; }
+.icon-down-open-big:before { content: '\e800'; } /* '' */
+.icon-down-open:before { content: '\e801'; } /* '' */
+.icon-mouse:before { content: '\e802'; } /* '' */
+.icon-keyboard:before { content: '\e803'; } /* '' */
+.icon-left-open:before { content: '\e804'; } /* '' */
+.icon-right-open:before { content: '\e805'; } /* '' */
+.icon-up-open:before { content: '\e806'; } /* '' */
+.icon-arrows:before { content: '\e807'; } /* '' */
+.icon-up-hand:before { content: '\e808'; } /* '' */
+.icon-check:before { content: '\e80b'; } /* '' */
+.icon-cancel:before { content: '\e80c'; } /* '' */
+.icon-level-up:before { content: '\e80d'; } /* '' */
+.icon-login:before { content: '\e80e'; } /* '' */
+.icon-left-open-big:before { content: '\e81d'; } /* '' */
+.icon-right-open-big:before { content: '\e81e'; } /* '' */
+.icon-up-open-big:before { content: '\e81f'; } /* '' */

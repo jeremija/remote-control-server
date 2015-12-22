@@ -1,7 +1,10 @@
 @import "fonts.less";
 
-@color-bg: #222;
-@color-fg: #666;
+@color-bg: #086788;
+@color-fg: #07A0C3;
+// @color-btn: #F0C808;
+@color-btn: #FFF1D0;
+@color-active: #F0C808;
 @icon-size: 48px;
 
 * {
@@ -44,7 +47,7 @@ body {
     }
 
     li.active {
-      color: white;
+      color: @color-active;
     }
   }
 
@@ -65,8 +68,59 @@ body {
     .panel();
   }
 
-  .keys {
+  .arrows {
     .panel();
+    position: relative;
+
+    @btn-size: 96px;
+    @btn-margin: 10px;
+
+    .buttons {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translateY(-50%) translateX(-50%);
+      text-align: center;
+      width: @btn-size * 3 + @btn-margin * 6;
+
+      span {
+        cursor: pointer;
+        text-align: center;
+        display: inline-block;
+        font-size: 36px;
+        width: @btn-size;
+        height: @btn-size;
+        margin: @btn-margin;
+        line-height: @btn-size + 1;
+        border-radius: 25%;
+        color: @color-btn;
+        background-color: @color-active;
+        transition: background-color ease-in 200ms;
+
+        &:hover,
+        &:active{
+          background-color: darken(@color-active, 5%);
+        }
+      }
+
+      span.escape,
+      span.backspace,
+      span.ok {
+        color: @color-btn;
+        background-color: transparent;
+
+        &:hover,
+        &:active{
+          color: @color-fg;
+          background-color: @color-btn;
+        }
+      }
+
+      span.empty-space {
+        background-color: transparent;
+      }
+    }
+
   }
 
   .mousepad {
@@ -98,7 +152,7 @@ body {
       padding: 0.5em;
     }
     span.active {
-      background-color: lighten(@color-bg, 5%);
+      background-color: @color-btn;
     }
   }
 
@@ -109,7 +163,7 @@ body {
     width: 100%;
     background-color: @color-bg;
     border: none;
-    border-top: 5px dashed lighten(@color-bg, 5%);
+    border-top: 5px dashed @color-fg;
     padding: 0.5em;
     text-align: center;
     color: @color-fg;

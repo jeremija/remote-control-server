@@ -4,32 +4,32 @@ const socket = require('../socket.js');
 const emitEvent = code => socket.emit('keypress', { code: code });
 
 const buttons = [{
-  className: 'escape',
-  handleClick: () => emitEvent(27),
-  text: 'ESC'
+  className: 'icon empty-space',
+  text: '\u00a0'
 }, {
-  className: 'icon up icon-up-open-big',
+  className: 'icon up icon-up-open',
   handleClick: () => emitEvent(38)
 }, {
-  className: 'backspace',
-  handleClick: () => emitEvent(8),
-  text: 'BKS'
+  className: 'icon empty-space',
+  text: '\u00a0'
 }, {
-  className: 'icon left icon-left-open-big',
+  className: 'icon left icon-left-open',
   handleClick: () => emitEvent(37),
 }, {
-  className: 'icon ok icon-ok-circle',
+  className: 'icon ok icon-check',
   handleClick: () => emitEvent(13)
 }, {
-  className: 'icon right icon-right-open-big',
+  className: 'icon right icon-right-open',
   handleClick: () => emitEvent(39)
 }, {
-  className: 'blank',
+  className: 'icon escape icon-cancel',
+  handleClick: () => emitEvent(27),
 }, {
-  className: 'icon down icon-down-open-big',
+  className: 'icon down icon-down-open',
   handleClick: () => emitEvent(40)
 }, {
-  className: 'blank',
+  className: 'icon backspace icon-level-up',
+  handleClick: () => emitEvent(8),
 }];
 
 function arrows() {
@@ -43,7 +43,13 @@ function arrows() {
     );
   });
 
-  return <div className="buttons">{buttonElements}</div>;
+  return (
+    <div className="arrows">
+      <div className="buttons">
+        {buttonElements}
+      </div>
+    </div>
+  );
 }
 
 module.exports = arrows;
