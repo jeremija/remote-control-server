@@ -4,6 +4,7 @@ const keyMapping = {
   9: 'tab',
   8: 'backspace',
   13: 'enter',
+  27: 'escape',
   37: 'left',
   38: 'up',
   39: 'right',

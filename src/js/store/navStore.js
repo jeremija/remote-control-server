@@ -11,7 +11,7 @@ const items = [{
   value: 'mousepad'
 }, {
   icon: 'icon-arrows',
-  value: 'keys'
+  value: 'arrows'
 }, {
   icon: 'icon-logs',
   value: 'log'
