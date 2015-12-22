@@ -6,9 +6,9 @@ Supports mouse movements, scrolling, clicking and keyboard input.
 
 Work in progress.
 
-<img src="http://i.imgur.com/38MzUIg.png">
-<img src="http://i.imgur.com/cn1IUK8.png">
-<img src="http://i.imgur.com/xtpgXoG.png">
+<img src="http://i.imgur.com/38MzUIg.png" width="400px">
+<img src="http://i.imgur.com/cn1IUK8.png" width="400px">
+<img src="http://i.imgur.com/xtpgXoG.png" width="400px">
 
 # Install & Run
 
