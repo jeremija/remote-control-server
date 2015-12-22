@@ -2,13 +2,15 @@
 
 Remote control your PC from your web browser on your other PC or mobile device.
 
-Supports mouse movements, clicking and keyboard input.
+Supports mouse movements, scrolling, clicking and keyboard input.
 
 Work in progress.
 
-![screenshot](screenshot.png)
+<img src="http://i.imgur.com/38MzUIg.png">
+<img src="http://i.imgur.com/cn1IUK8.png">
+<img src="http://i.imgur.com/xtpgXoG.png">
 
-# install & run
+# Install & Run
 
 Install from npm:
 
@@ -33,6 +35,11 @@ http://192.168.0.10:3000
 ```
 
 Replace `192.168.0.10` with the LAN IP address of your server.
+
+# Note
+
+This package requires [robotjs](https://www.npmjs.com/package/robotjs) so make
+sure you have the required prerequisites installed for compiling that package.
 
 # license
 
