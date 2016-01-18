@@ -12,22 +12,42 @@ function buttonToggles() {
     let active = buttonStates[button];
     let className = button + ' ' + (active ? 'active' : '');
     function onClick() {
+      keyDispatcher.dispatch({ type: 'click', button: button });
+    }
+    function onDoubleClick() {
       keyDispatcher.dispatch({ type: 'toggle-button', button: button});
     }
-    return (<span className={className} key={i} onClick={onClick}>
-      {button}
-    </span>);
+    return (
+      <button
+        className={className}
+        key={i}
+        onClick={onClick}
+        onDoubleClick={onDoubleClick}
+      >
+          {button}
+      </button>
+    );
   });
 
   let keys = ['control', 'shift', 'alt', 'meta'].map((key, i) => {
     let active = keyStates[key];
     let className = key + ' ' + (active ? 'active' : '');
     function onClick() {
+      keyDispatcher.dispatch({ type: 'tap-key', key: key });
+    }
+    function onDoubleClick() {
       keyDispatcher.dispatch({ type: 'toggle-key', key: key});
     }
-    return (<span className={className} key={i} onClick={onClick}>
-      {key}
-    </span>);
+    return (
+      <button
+        className={className}
+        key={i}
+        onClick={onClick}
+        onDoubleClick={onDoubleClick}
+      >
+        {key}
+      </button>
+    );
   });
 
   return (<div className="button-toggles">

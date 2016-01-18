@@ -169,4 +169,23 @@ describe('socket', () => {
     expect(robot.mouseToggle.mock.calls[0]).toEqual(['down', 'left']);
   });
 
+  it('should add tap-key handler', () => {
+    let handleTapKey = findHandler('tap-key');
+    expect(typeof handleTapKey).toBe('function');
+
+    handleTapKey('alt');
+
+    expect(robot.keyTap.mock.calls[0]).toEqual(['alt']);
+  });
+
+  it('should add tap-key handler, rename meta key to command', () => {
+    let handleTapKey = findHandler('tap-key');
+    expect(typeof handleTapKey).toBe('function');
+
+    handleTapKey('meta');
+
+    expect(robot.keyTap.mock.calls[0]).toEqual(['command']);
+  });
+
+
 });

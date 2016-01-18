@@ -79,4 +79,9 @@ module.exports = function(socket, robot) {
     robot.mouseToggle(state, button);
   });
 
+  socket.on('tap-key', key => {
+    if (key === 'meta') key = 'command';
+    robot.keyTap(key);
+  });
+
 };

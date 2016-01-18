@@ -32,6 +32,16 @@ const handlers = {
     if (state === undefined) return;
     socket.emit('toggle-key', key, state ? 'up' : 'down');
     keyStates[key] = !state;
+  },
+  'click': ({ button }) => {
+    if (!(button in buttonStates)) return;
+    socket.emit('click', { button });
+    buttonStates[button] = false;
+  },
+  'tap-key': ({ key }) => {
+    if (!(key in keyStates)) return;
+    socket.emit('tap-key', key);
+    keyStates[key] = false;
   }
 };
 

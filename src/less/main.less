@@ -9,6 +9,7 @@
 
 * {
   box-sizing: border-box;
+  user-select: none;
 }
 
 html, body {
@@ -140,8 +141,8 @@ body {
 
   .button-toggles {
     text-align: center;
-    span {
-      user-select: none;
+    button {
+      border: none;
       display: inline-block;
       background-color: @color-bg;
       border: none;
@@ -151,7 +152,7 @@ body {
       cursor: pointer;
       padding: 0.5em;
     }
-    span.active {
+    button.active {
       background-color: @color-btn;
     }
   }

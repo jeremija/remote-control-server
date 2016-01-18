@@ -41,11 +41,21 @@ describe('keyStore', () => {
   it('should gracefully handle unknown keys', () => {
     handleAction({ type: 'toggle-key', key: 'hfgda' });
     expect(onChange.mock.calls.length).toBe(1);
+    expect(socket.emit.mock.calls.length).toBe(0);
+
+    handleAction({ type: 'tap-key', key: 'hfgda' });
+    expect(onChange.mock.calls.length).toBe(2);
+    expect(socket.emit.mock.calls.length).toBe(0);
   });
 
   it('should gracefully handle unknown buttons', () => {
     handleAction({ type: 'toggle-button', button: 'hfgda' });
     expect(onChange.mock.calls.length).toBe(1);
+    expect(socket.emit.mock.calls.length).toBe(0);
+
+    handleAction({ type: 'click', button: 'hfgda' });
+    expect(onChange.mock.calls.length).toBe(2);
+    expect(socket.emit.mock.calls.length).toBe(0);
   });
 
   it('should handle "toggle-key" action', () => {
@@ -100,6 +110,39 @@ describe('keyStore', () => {
      ['toggle-button', 'left', 'up']);
 
     expect(onChange.mock.calls.length).toBe(2);
+    expect(keyStore.getButtonStates()).toEqual({
+      left: false,
+      right: false,
+      middle: false
+    });
+  });
+
+  it('should handle "tap-key" action', () => {
+    keyStore.getKeyStates()['alt'] = true;
+
+    handleAction({ type: 'tap-key', key: 'alt'});
+
+    expect(socket.emit.mock.calls.length).toBe(1);
+    expect(socket.emit.mock.calls[0]).toEqual(['tap-key', 'alt']);
+
+    expect(onChange.mock.calls.length).toBe(1);
+    expect(keyStore.getKeyStates()).toEqual({
+      control: false,
+      alt: false,
+      shift: false,
+      meta: false
+    });
+  });
+
+  it('should handle "click" action', () => {
+    keyStore.getButtonStates()['left'] = true;
+
+    handleAction({ type: 'click', button: 'left'});
+
+    expect(socket.emit.mock.calls.length).toBe(1);
+    expect(socket.emit.mock.calls[0]).toEqual(['click', { button: 'left' }]);
+
+    expect(onChange.mock.calls.length).toBe(1);
     expect(keyStore.getButtonStates()).toEqual({
       left: false,
       right: false,

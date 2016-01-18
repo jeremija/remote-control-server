@@ -41,11 +41,37 @@ describe('buttonToggles', () => {
     expect(node.className).toBe('button-toggles');
   });
 
-  it('should toggle state on key click', () => {
+  it('should send key tap on click', () => {
     let node = render();
     ['.control', '.alt'].forEach((className, index) => {
       let name = className.substring(1);
       TestUtils.Simulate.click(node.querySelector(className));
+
+      expect(keyDispatcher.dispatch.mock.calls.length).toBe(index + 1);
+      expect(keyDispatcher.dispatch.mock.calls[index][0]).toEqual({
+        type: 'tap-key', key: name
+      });
+    });
+  });
+
+  it('should send mouse click on click', () => {
+    let node = render();
+    ['.left', '.right'].forEach((className, index) => {
+      let name = className.substring(1);
+      TestUtils.Simulate.click(node.querySelector(className));
+
+      expect(keyDispatcher.dispatch.mock.calls.length).toBe(index + 1);
+      expect(keyDispatcher.dispatch.mock.calls[index][0]).toEqual({
+        type: 'click', button: name
+      });
+    });
+  });
+
+  it('should toggle state on key doubleClick', () => {
+    let node = render();
+    ['.control', '.alt'].forEach((className, index) => {
+      let name = className.substring(1);
+      TestUtils.Simulate.doubleClick(node.querySelector(className));
 
       expect(keyDispatcher.dispatch.mock.calls.length).toBe(index + 1);
       expect(keyDispatcher.dispatch.mock.calls[index][0]).toEqual({
@@ -54,11 +80,11 @@ describe('buttonToggles', () => {
     });
   });
 
-  it('should emit socket event and toggle state on btn click', () => {
+  it('should toggle state on btn doubleClick', () => {
     let node = render();
     ['.left', '.right'].forEach((className, index) => {
       let name = className.substring(1);
-      TestUtils.Simulate.click(node.querySelector(className));
+      TestUtils.Simulate.doubleClick(node.querySelector(className));
 
       expect(keyDispatcher.dispatch.mock.calls.length).toBe(index + 1);
       expect(keyDispatcher.dispatch.mock.calls[index][0]).toEqual({
