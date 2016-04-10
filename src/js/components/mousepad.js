@@ -1,3 +1,5 @@
+import Hammer from 'react-hammerjs';
+
 const React = require('react');
 const socket = require('../socket.js');
 const _ = require('underscore');
@@ -68,9 +70,9 @@ function mousepad({throttle}) {
   const onTouchMove = _.throttle(_onTouchMove, 5);
 
   return (
-    <div className="mousepad"
-      onClick={onClick}
-      onDoubleClick={onDoubleClick}
+    <Hammer className="mousepad"
+      onTap={onClick}
+      onDoubleTap={onDoubleClick}
       onMouseEnter={onMouseEnter}
       onMouseMove={onMouseMove}
       onTouchEnd={onTouchEnd}
@@ -78,7 +80,7 @@ function mousepad({throttle}) {
       onTouchStart={onTouchStart}
     >
       <span className="icon icon-mouse" />
-    </div>
+    </Hammer>
   );
 
 }
