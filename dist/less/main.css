@@ -118,8 +118,11 @@ body {
 .app {
   width: 100%;
   height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-flow: column;
+  -ms-flex-flow: column;
+      flex-flow: column;
 }
 .app .navbar {
   padding: 0 0 0 0.25em;
@@ -136,19 +139,25 @@ body {
   color: #f0c808;
 }
 .app .blank {
-  flex: 2;
+  -webkit-box-flex: 2;
+      -ms-flex: 2;
+          flex: 2;
   overflow: auto;
 }
 .app .log {
   padding: 1em;
-  flex: 2;
+  -webkit-box-flex: 2;
+      -ms-flex: 2;
+          flex: 2;
   overflow: auto;
 }
 .app .log code {
   display: block;
 }
 .app .arrows {
-  flex: 2;
+  -webkit-box-flex: 2;
+      -ms-flex: 2;
+          flex: 2;
   overflow: auto;
   position: relative;
 }
@@ -156,7 +165,8 @@ body {
   position: absolute;
   left: 50%;
   top: 50%;
-  transform: translateY(-50%) translateX(-50%);
+  -webkit-transform: translateY(-50%) translateX(-50%);
+          transform: translateY(-50%) translateX(-50%);
   text-align: center;
   width: 348px;
 }
@@ -172,6 +182,7 @@ body {
   border-radius: 25%;
   color: #fff1d0;
   background-color: #f0c808;
+  -webkit-transition: background-color ease-in 200ms;
   transition: background-color ease-in 200ms;
 }
 .app .arrows .buttons span:hover,
@@ -197,7 +208,8 @@ body {
   background-color: transparent;
 }
 .app .mousepad {
-  flex: 2;
+	display: block;
+	height: 100%;
   overflow: auto;
   position: relative;
 }
@@ -214,7 +226,10 @@ body {
   text-align: center;
 }
 .app .button-toggles span {
-  user-select: none;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
   display: inline-block;
   background-color: #086788;
   border: none;
@@ -228,6 +243,8 @@ body {
   background-color: #fff1d0;
 }
 .app input {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   min-height: 30px;
   width: 100%;
