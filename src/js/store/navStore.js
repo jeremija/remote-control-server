@@ -20,7 +20,8 @@ const items = [{
   value: 'log'
 }];
 const values = items.map(item => item.value);
-let active = values[0];
+let active = values[1];
+// let active = values[0];
 
 const getItems = () => items;
 const getActive = () => active;

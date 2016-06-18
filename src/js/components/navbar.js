@@ -18,7 +18,7 @@ function navbar() {
   });
 
   function teste(){
-      document.getElementById( 'input' ).focus();
+    document.getElementById( 'input' ).focus();
   }
 
   return (<ul className="navbar">{list}</ul>);
