@@ -77,16 +77,23 @@ body {
   .arrows {
     .panel();
     position: relative;
+	display: flex;
+	display: -webkit-box;
+	display: -ms-flexbox;
+	-webkit-box-align: center;
+	-ms-flex-align: center;
+	align-items: center;
+	-webkit-box-pack: center;
+	-ms-flex-pack: center;
+	justify-content: center;
 
-    @btn-size: 96px;
+    @btn-size: 80px;
     @btn-margin: 10px;
 
     .buttons {
-      position: absolute;
-      left: 50%;
-      top: 50%;
-      transform: translateY(-50%) translateX(-50%);
-      -webkit-transform: translateY(-50%) translateX(-50%);
+	  width: 100%;
+      background-color: @color-bg;
+	  .panel();
       text-align: center;
       width: @btn-size * 3 + @btn-margin * 6;
 
