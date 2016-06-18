@@ -31,13 +31,13 @@ body {
 .app {
   width: 100%;
   height: 100%;
-    display: -webkit-box;
-	display: -ms-flexbox;
-	display: flex;
-	-webkit-box-orient: vertical;
-	-webkit-box-direction: normal;
-	-ms-flex-direction: column;
-	flex-direction: column;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
 
   .navbar {
     padding: 0 0 0 0.25em;
@@ -59,7 +59,7 @@ body {
   .panel() {
     -webkit-box-flex: 2;
     -ms-flex: 2;
-            flex: 2;
+    flex: 2;
   }
 
   .blank {
@@ -86,6 +86,7 @@ body {
       left: 50%;
       top: 50%;
       transform: translateY(-50%) translateX(-50%);
+      -webkit-transform: translateY(-50%) translateX(-50%);
       text-align: center;
       width: @btn-size * 3 + @btn-margin * 6;
 
@@ -102,6 +103,7 @@ body {
         color: @color-btn;
         background-color: @color-active;
         transition: background-color ease-in 200ms;
+        -webkit-transition: background-color ease-in 200ms;
 
         &:hover,
         &:active{
@@ -147,6 +149,9 @@ body {
   .button-toggles {
     text-align: center;
     span {
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
       user-select: none;
       display: inline-block;
       background-color: @color-bg;
