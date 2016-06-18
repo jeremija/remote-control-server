@@ -20,6 +20,7 @@ function input() {
     <div className="input">
       <input onKeyUp={onKeyUp}
         placeholder={String.fromCharCode(parseInt('e803', 16))}
+        id="input"
         type="text"
       />
     </div>);

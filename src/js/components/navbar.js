@@ -17,7 +17,11 @@ function navbar() {
     </li>);
   });
 
-  return <ul className="navbar">{list}</ul>;
+  function teste(){
+      document.getElementById( 'input' ).focus();
+  }
+
+  return (<ul className="navbar">{list}</ul>);
 }
 
 module.exports = navbar;
