@@ -17,16 +17,16 @@ function input() {
     return true;
   }
   function onBlur(event) {
-   dispatcher.dispatch({ type: 'nav', value: 'mousepad' }); 
+   dispatcher.dispatch({ type: 'nav', value: 'mousepad' });
   }
 
   return (
     <div className="input">
       <input
-        onKeyUp={onKeyUp}
-        onBlur={onBlur}
-        placeholder={String.fromCharCode(parseInt('e803', 16))}
         id="input"
+        onBlur={onBlur}
+        onKeyUp={onKeyUp}
+        placeholder={String.fromCharCode(parseInt('e803', 16))}
         type="text"
       />
     </div>);

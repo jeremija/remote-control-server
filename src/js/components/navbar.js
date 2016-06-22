@@ -17,10 +17,6 @@ function navbar() {
     </li>);
   });
 
-  function teste(){
-    document.getElementById( 'input' ).focus();
-  }
-
   return (<ul className="navbar">{list}</ul>);
 }
 

@@ -31,8 +31,8 @@ const handlers = {
       throw new Error('nav value ' + value + ' not found in ' + values);
     }
 
-    if ( value === 'keyboard' ) {
-        document.getElementById( 'input' ).focus();
+    if (value === 'keyboard') {
+        document.getElementById('input').focus();
     }
 
     active = value;

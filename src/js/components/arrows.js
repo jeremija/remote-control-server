@@ -33,16 +33,13 @@ const buttons = [{
 }];
 
 function arrows() {
-  // Will break lines after the third element
-  let counter = 0;
-
   let buttonElements = buttons.map((button, index) => {
       return (
       <span
         className={button.className}
         key={index}
         onClick={button.handleClick}
-      >{button.text}</span>   
+      >{button.text}</span>
       );
   });
 
