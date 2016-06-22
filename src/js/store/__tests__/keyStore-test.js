@@ -1,6 +1,5 @@
 jest.dontMock('../keyStore.js');
 jest.dontMock('events');
-jest.dontMock('bufferutil');
 
 const socket = require('../../socket.js');
 const dispatcher = require('../../dispatcher/keyDispatcher.js');

@@ -1,5 +1,4 @@
 jest.dontMock('../app.js');
-jest.dontMock('bufferutil');
 
 const React = require('react');
 const ReactDOM = require('react-dom');

@@ -1,5 +1,4 @@
 jest.dontMock('../arrows.js');
-jest.dontMock('bufferutil');
 
 const socket = require('../../socket.js');
 

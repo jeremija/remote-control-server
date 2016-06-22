@@ -1,5 +1,4 @@
 jest.dontMock('../buttonToggles.js');
-jest.dontMock('bufferutil');
 
 const keyStore = require('../../store/keyStore.js');
 const keyDispatcher = require('../../dispatcher/keyDispatcher.js');

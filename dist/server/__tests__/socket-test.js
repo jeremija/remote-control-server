@@ -1,5 +1,4 @@
 jest.dontMock('../socket.js');
-jest.dontMock('bufferutil');
 
 const robot = jest.genMockFromModule('robotjs');
 const handleSocket = require('../socket.js');

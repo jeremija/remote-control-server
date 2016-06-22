@@ -107,7 +107,7 @@ body {
 body {
   height: 100%;
   background-color: #086788;
-  color: #07a0c3;
+  color: #07A0C3;
   margin: 0 0;
   font-family: sans-serif;
 }
@@ -133,7 +133,7 @@ body {
   z-index: 1;
 }
 .app .navbar li.active {
-  color: #f0c808;
+  color: #F0C808;
 }
 .app .blank {
   flex: 2;
@@ -170,8 +170,8 @@ body {
   margin: 10px;
   line-height: 97px;
   border-radius: 25%;
-  color: #fff1d0;
-  background-color: #f0c808;
+  color: #FFF1D0;
+  background-color: #F0C808;
   transition: background-color ease-in 200ms;
 }
 .app .arrows .buttons span:hover,
@@ -181,7 +181,7 @@ body {
 .app .arrows .buttons span.escape,
 .app .arrows .buttons span.backspace,
 .app .arrows .buttons span.ok {
-  color: #fff1d0;
+  color: #FFF1D0;
   background-color: transparent;
 }
 .app .arrows .buttons span.escape:hover,
@@ -190,8 +190,8 @@ body {
 .app .arrows .buttons span.escape:active,
 .app .arrows .buttons span.backspace:active,
 .app .arrows .buttons span.ok:active {
-  color: #07a0c3;
-  background-color: #fff1d0;
+  color: #07A0C3;
+  background-color: #FFF1D0;
 }
 .app .arrows .buttons span.empty-space {
   background-color: transparent;
@@ -218,14 +218,14 @@ body {
   display: inline-block;
   background-color: #086788;
   border: none;
-  color: #07a0c3;
+  color: #07A0C3;
   margin-bottom: 0.5em;
   font-size: 16px;
   cursor: pointer;
   padding: 0.5em;
 }
 .app .button-toggles span.active {
-  background-color: #fff1d0;
+  background-color: #FFF1D0;
 }
 .app input {
   display: flex;
@@ -233,14 +233,14 @@ body {
   width: 100%;
   background-color: #086788;
   border: none;
-  border-top: 5px dashed #07a0c3;
+  border-top: 5px dashed #07A0C3;
   padding: 0.5em;
   text-align: center;
-  color: #07a0c3;
+  color: #07A0C3;
   font-size: 1.5em;
   font-family: "icons";
   font-size: 48px;
 }
 .app input::-webkit-input-placeholder {
-  color: #07a0c3;
+  color: #07A0C3;
 }

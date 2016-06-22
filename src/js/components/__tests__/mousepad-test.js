@@ -1,5 +1,5 @@
 jest.dontMock('../mousepad.js');
-jest.dontMock('bufferutil');
+jest.dontMock('underscore');
 
 const socket = require('../../socket.js');
 
