@@ -10,6 +10,9 @@ const items = [{
   icon: 'icon-mouse',
   value: 'mousepad'
 }, {
+    icon: 'icon-keyboard',
+    value: 'keyboard'
+}, {
   icon: 'icon-arrows',
   value: 'arrows'
 }, {
@@ -26,6 +29,10 @@ const handlers = {
   nav: ({ value }) => {
     if (values.indexOf(value) < 0) {
       throw new Error('nav value ' + value + ' not found in ' + values);
+    }
+
+    if (value === 'keyboard') {
+        document.getElementById('input').focus();
     }
 
     active = value;

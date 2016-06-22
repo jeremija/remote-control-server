@@ -17,7 +17,7 @@ function navbar() {
     </li>);
   });
 
-  return <ul className="navbar">{list}</ul>;
+  return (<ul className="navbar">{list}</ul>);
 }
 
 module.exports = navbar;

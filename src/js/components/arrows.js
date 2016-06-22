@@ -34,13 +34,13 @@ const buttons = [{
 
 function arrows() {
   let buttonElements = buttons.map((button, index) => {
-    return (
+      return (
       <span
         className={button.className}
         key={index}
         onClick={button.handleClick}
       >{button.text}</span>
-    );
+      );
   });
 
   return (

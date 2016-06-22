@@ -1,4 +1,5 @@
 const React = require('react');
+const dispatcher = require('../dispatcher/navDispatcher.js');
 const socket = require('../socket.js');
 
 function input() {
@@ -15,10 +16,16 @@ function input() {
 
     return true;
   }
+  function onBlur(event) {
+   dispatcher.dispatch({ type: 'nav', value: 'mousepad' });
+  }
 
   return (
     <div className="input">
-      <input onKeyUp={onKeyUp}
+      <input
+        id="input"
+        onBlur={onBlur}
+        onKeyUp={onKeyUp}
         placeholder={String.fromCharCode(parseInt('e803', 16))}
         type="text"
       />
