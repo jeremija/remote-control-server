@@ -118,8 +118,13 @@ body {
 .app {
   width: 100%;
   height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-flow: column;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
 }
 .app .navbar {
   padding: 0 0 0 0.25em;
@@ -136,43 +141,57 @@ body {
   color: #F0C808;
 }
 .app .blank {
+  -webkit-box-flex: 2;
+  -ms-flex: 2;
   flex: 2;
-  overflow: auto;
 }
 .app .log {
   padding: 1em;
+  -webkit-box-flex: 2;
+  -ms-flex: 2;
   flex: 2;
-  overflow: auto;
 }
 .app .log code {
   display: block;
 }
 .app .arrows {
+  -webkit-box-flex: 2;
+  -ms-flex: 2;
   flex: 2;
-  overflow: auto;
   position: relative;
+  display: flex;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
 }
 .app .arrows .buttons {
-  position: absolute;
-  left: 50%;
-  top: 50%;
-  transform: translateY(-50%) translateX(-50%);
+  display: inline-block;
+  background-color: #086788;
+  -webkit-box-flex: 2;
+  -ms-flex: 2;
+  flex: 2;
   text-align: center;
-  width: 348px;
+  width: 300px;
 }
 .app .arrows .buttons span {
   cursor: pointer;
   text-align: center;
   display: inline-block;
   font-size: 36px;
-  width: 96px;
-  height: 96px;
+  width: 80px;
+  height: 80px;
   margin: 10px;
-  line-height: 97px;
+  line-height: 81px;
   border-radius: 25%;
   color: #FFF1D0;
   background-color: #F0C808;
   transition: background-color ease-in 200ms;
+  -webkit-transition: background-color ease-in 200ms;
 }
 .app .arrows .buttons span:hover,
 .app .arrows .buttons span:active {
@@ -197,8 +216,9 @@ body {
   background-color: transparent;
 }
 .app .mousepad {
+  -webkit-box-flex: 2;
+  -ms-flex: 2;
   flex: 2;
-  overflow: auto;
   position: relative;
 }
 .app .mousepad .icon {
@@ -214,6 +234,9 @@ body {
   text-align: center;
 }
 .app .button-toggles span {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
   user-select: none;
   display: inline-block;
   background-color: #086788;
@@ -228,6 +251,8 @@ body {
   background-color: #FFF1D0;
 }
 .app input {
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
   min-height: 30px;
   width: 100%;
