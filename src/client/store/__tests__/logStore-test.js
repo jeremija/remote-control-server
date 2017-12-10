@@ -10,7 +10,7 @@ describe('logStore', () => {
 
   let listener
   beforeEach(() => {
-    listener = jest.genMockFunction()
+    listener = jest.fn()
     logStore.addListener(listener)
   })
 

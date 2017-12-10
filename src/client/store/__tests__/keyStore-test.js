@@ -7,7 +7,7 @@ const keyStore = require('../keyStore.js')
 
 describe('keyStore', () => {
   let handleAction = dispatcher.register.mock.calls[0][0]
-  let onChange = jest.genMockFunction()
+  let onChange = jest.fn()
 
   beforeEach(() => {
     onChange.mockClear()

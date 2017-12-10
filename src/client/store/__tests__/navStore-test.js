@@ -6,7 +6,7 @@ const store = require('../navStore.js')
 
 describe('store', () => {
   let handleAction = dispatcher.register.mock.calls[0][0]
-  let onChange = jest.genMockFunction()
+  let onChange = jest.fn()
 
   beforeEach(() => {
     onChange.mockClear()

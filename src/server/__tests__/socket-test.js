@@ -7,7 +7,7 @@ describe('socket', () => {
   let socket
   beforeEach(() => {
     socket = {
-      on: jest.genMockFunction()
+      on: jest.fn()
     }
     handleSocket(socket, robot)
 

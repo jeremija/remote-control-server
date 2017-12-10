@@ -79,7 +79,7 @@ describe('input', () => {
     let node = render()
     let event1 = {
       touches: [{ clientX: 30, clientY: 50 }],
-      preventDefault: jest.genMockFunction()
+      preventDefault: jest.fn()
     }
     let event2 = { touches: [{ clientX: 45, clientY: 32 }] }
 
@@ -126,7 +126,7 @@ describe('input', () => {
     let node = render()
     let event1 = {
       touches: [{ clientX: 30, clientY: 50 }],
-      preventDefault: jest.genMockFunction()
+      preventDefault: jest.fn()
     }
 
     TestUtils.Simulate.touchStart(node, event1)
@@ -140,7 +140,7 @@ describe('input', () => {
     let node = render()
     let event1 = {
       touches: [{ clientX: 30, clientY: 50 }],
-      preventDefault: jest.genMockFunction()
+      preventDefault: jest.fn()
     }
 
     TestUtils.Simulate.touchStart(node, event1)
