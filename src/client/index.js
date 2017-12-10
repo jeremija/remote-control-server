@@ -1,17 +1,9 @@
-const React = require('react')
-const ReactDom = require('react-dom')
+import React from 'react'
+import ReactDOM from 'react-dom'
 
-const App = require('./components/app.js')
-const navStore = require('./store/navStore.js')
-const logStore = require('./store/logStore.js')
-const keyStore = require('./store/keyStore.js')
+import App from './containers/App'
+import store from './store'
+import { Provider } from 'react-redux'
 
-function render () {
-  ReactDom.render(<App />, document.querySelector('#container'))
-}
-
-navStore.addListener(render)
-logStore.addListener(render)
-keyStore.addListener(render)
-
-render()
+const container = window.document.getElementById('container')
+ReactDOM.render(<Provider store={store}><App /></Provider>, container)

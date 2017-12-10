@@ -1,4 +1,4 @@
-'use strict'
+const c = require('../constants')
 
 const keyMapping = {
   9: 'tab',
@@ -9,6 +9,11 @@ const keyMapping = {
   38: 'up',
   39: 'right',
   40: 'down'
+}
+
+const pressedToState = {
+  true: 'down',
+  false: 'up'
 }
 
 module.exports = function (socket, robot) {
@@ -24,23 +29,23 @@ module.exports = function (socket, robot) {
     robot.scrollMouse(1, direction)
   }
 
-  socket.on('keytap', key => {
+  socket.on(c.WS_KEY_TAP, key => {
     robot.keyTap(key)
   })
 
-  socket.on('mousemove', (pos, scroll) => {
+  socket.on(c.WS_MOUSE_MOVE, ({ x, y, scroll }) => {
     if (!scroll) {
-      moveMouse(pos)
+      moveMouse({ x, y })
       return
     }
-    scrollMouse(pos)
+    scrollMouse({ x, y })
   })
 
-  socket.on('click', params => {
+  socket.on(c.WS_MOUSE_CLICK, params => {
     robot.mouseClick(params.button, params.double)
   })
 
-  socket.on('keypress', action => {
+  socket.on(c.WS_KEY_PRESS, action => {
     let alt = action.alt
     let ctrl = action.ctrl
     let shift = action.shift
@@ -68,12 +73,14 @@ module.exports = function (socket, robot) {
     return false
   })
 
-  socket.on('toggle-key', (key, state) => {
+  socket.on(c.WS_KEY_TOGGLE, ({ key, pressed }) => {
+    const state = pressedToState[!!pressed]
     if (key === 'meta') key = 'command'
     robot.keyToggle(key, state)
   })
 
-  socket.on('toggle-button', (button, state) => {
+  socket.on(c.WS_MOUSE_TOGGLE, ({ button, pressed }) => {
+    const state = pressedToState[!!pressed]
     robot.mouseToggle(state, button)
   })
 }

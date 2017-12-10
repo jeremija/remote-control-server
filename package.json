@@ -26,19 +26,26 @@
   "author": "Jerko Steiner",
   "license": "MIT",
   "dependencies": {
+    "classnames": "^2.2.5",
     "express": "^4.16.2",
     "lodash": "^4.17.4",
+    "prop-types": "^15.6.0",
     "pug": "^2.0.0-rc.4",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-redux": "^5.0.6",
     "redux": "^3.7.2",
+    "redux-logger": "^3.0.6",
     "robotjs": "^0.4.7",
+    "seamless-immutable": "^7.1.2",
     "socket.io": "^2.0.4",
     "socket.io-client": "^2.0.4"
   },
   "devDependencies": {
+    "babel-eslint": "^8.0.3",
     "babel-jest": "^21.2.0",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
     "babel-preset-env": "^1.6.1",
     "babel-preset-react": "^6.3.13",
     "babelify": "^8.0.0",
@@ -57,6 +64,8 @@
     "watchify": "^3.9.0"
   },
   "jest": {
-    "scriptPreprocessor": "<rootDir>/node_modules/babel-jest"
+    "transform": {
+      "src/client/.*\\.js$": "<rootDir>/node_modules/babel-jest"
+    }
   }
 }
