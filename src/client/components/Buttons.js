@@ -1,9 +1,10 @@
+import Immutable from 'seamless-immutable'
 import React from 'react'
 import classnames from 'classnames'
 import { PropTypes, keyboard, mouse } from '../PropTypes'
 
-const BUTTONS = ['left', 'right', 'middle']
-const KEYS = ['control', 'shift', 'alt', 'meta']
+export const BUTTONS = Immutable(['left', 'right', 'middle'])
+export const KEYS = Immutable(['control', 'shift', 'alt', 'meta'])
 
 class Button extends React.PureComponent {
   static propTypes = {
@@ -19,10 +20,10 @@ class Button extends React.PureComponent {
     onClick(payload)
   }
   render () {
-    const { name, label, pressed } = this.props
+    const { name, label, pressed, type } = this.props
     return (
       <button
-        className={classnames('button', name, { pressed })}
+        className={classnames(type, name, { pressed })}
         onClick={this.handleClick}
       >
         {label}
@@ -47,19 +48,21 @@ export default class Buttons extends React.PureComponent {
       <div className='buttons'>
         {BUTTONS.map(buttonName => (
           <Button
+            key={buttonName}
+            label={buttonName}
             name={buttonName}
             onClick={handleMouseToggle}
             pressed={mouse[buttonName]}
-            label={buttonName}
             type='button'
           />
         ))}
-        {KEYS.map(buttonName => (
+        {KEYS.map(keyName => (
           <Button
-            name={buttonName}
+            key={keyName}
+            label={keyName}
+            name={keyName}
             onClick={handleKeyboardToggle}
-            pressed={keyboard[buttonName]}
-            label={buttonName}
+            pressed={keyboard[keyName]}
             type='key'
           />
         ))}

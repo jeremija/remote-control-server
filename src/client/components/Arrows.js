@@ -1,7 +1,8 @@
 import React from 'react'
 import { KeyboardActions, PropTypes } from '../PropTypes'
+import Immutable from 'seamless-immutable'
 
-const BUTTONS = [{
+export const BUTTONS = Immutable([{
   className: 'icon empty-space',
   text: '\u00a0'
 }, {
@@ -28,12 +29,12 @@ const BUTTONS = [{
 }, {
   className: 'icon backspace icon-level-up',
   code: 8
-}]
+}])
 
 class Button extends React.PureComponent {
   static propTypes = {
     className: PropTypes.string.isRequired,
-    label: PropTypes.string.isRequired,
+    label: PropTypes.string,
     code: PropTypes.number,
     onClick: PropTypes.func.isRequired
   }
@@ -58,11 +59,12 @@ export default class Arrows extends React.PureComponent {
   render () {
     const { KeyboardActions } = this.props
     return (
-      <div className='arrows'>
-        {BUTTONS.map(button => (
+      <div className='view-arrows'>
+        {BUTTONS.map((button, i) => (
           <Button
             className={button.className}
-            key={button.className}
+            code={button.code}
+            key={i}
             onClick={KeyboardActions.press}
             label={button.text}
           />

@@ -9,7 +9,7 @@ const propsByType = {
 }
 
 function buildActionProps (Actions) {
-  return Object.key(Actions)
+  const propTypes = Object.keys(Actions)
   .filter(key => {
     const type = typeof Actions[key]
     return !!propsByType[type]
@@ -19,23 +19,28 @@ function buildActionProps (Actions) {
     props[key] = propsByType[type].isRequired
     return props
   }, {})
+  return PropTypes.shape(propTypes)
 }
 
 export const PropTypes = _PropTypes
 
 export const KeyboardActions = buildActionProps(_KeyboardActions)
 export const ViewActions = buildActionProps(_ViewActions)
-export const MouseActinos = buildActionProps(_MouseActions)
+export const MouseActions = buildActionProps(_MouseActions)
 
-export const keyboard = {
+export const keyboard = PropTypes.shape({
   control: PropTypes.bool.isRequired,
   alt: PropTypes.bool.isRequired,
   shift: PropTypes.bool.isRequired,
   meta: PropTypes.bool.isRequired
-}
+})
 
-export const mouse = {
+export const mouse = PropTypes.shape({
   left: PropTypes.bool.isRequired,
   right: PropTypes.bool.isRequired,
   middle: PropTypes.bool.isRequired
-}
+})
+
+export const view = PropTypes.shape({
+  activeView: PropTypes.string.isRequired
+})

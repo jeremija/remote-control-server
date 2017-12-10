@@ -12,7 +12,7 @@ export function keyboard (state = keyboardState, action) {
   switch (action && action.type) {
     case KEYBOARD_TOGGLE:
       const { key, pressed } = action.payload
-      return state.setIn(key, !!pressed)
+      return state.setIn([ key ], !!pressed)
     default:
       return state
   }

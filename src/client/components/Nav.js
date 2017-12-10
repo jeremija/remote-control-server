@@ -4,7 +4,7 @@ import { PropTypes } from '../PropTypes'
 
 const VIEWS = [{
   icon: 'icon-mouse',
-  name: 'mousepad'
+  name: 'mouse'
 }, {
   icon: 'icon-arrows',
   name: 'arrows'
@@ -25,11 +25,11 @@ class NavButton extends React.PureComponent {
     onClick(name)
   }
   render () {
-    const { active, icon } = this.props
+    const { active, name, icon } = this.props
     return (
       <button
-        className={classnames({ active })}
-        handleClick={this.handleClick}
+        className={classnames('nav-button', name, { active })}
+        onClick={this.handleClick}
       >
         <span className={'icon ' + icon} />
       </button>
@@ -47,18 +47,19 @@ export default class Nav extends React.PureComponent {
 
     return (
       <ul>
-        {VIEWS.map(view => (
-          <li
-            className={classnames({ active: view.name === activeView })}
-            key={view.name}
-          >
-            <NavButton
-              onClick={onChange}
-              name={view.name}
-              icon={view.icon}
-            />
-          </li>
-        ))}
+        {VIEWS.map(view => {
+          const active = view.name === activeView
+          return (
+            <li key={view.name}>
+              <NavButton
+                active={active}
+                onClick={onChange}
+                name={view.name}
+                icon={view.icon}
+              />
+            </li>
+          )
+        })}
       </ul>
     )
   }

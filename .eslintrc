@@ -2,6 +2,7 @@
   "extends": ["standard", "standard-react"],
   "globals": {
     "jest": true,
+    "jasmine": true,
     "it": true,
     "expect": true,
     "describe": true,

@@ -11,12 +11,8 @@ function getButtonName (eventButtonCode) {
   return buttons[eventButtonCode] || 'left'
 }
 
-export function move ({ x, y }) {
-  socket.emit(c.WS_MOUSE_MOVE, { x, y, scroll: false })
-}
-
-export function scroll ({ x, y }) {
-  socket.emit(c.WS_MOUSE_MOVE, { x, y, scroll: true })
+export function move ({ x, y, scroll = false }) {
+  socket.emit(c.WS_MOUSE_MOVE, { x, y, scroll })
 }
 
 export function click (eventButtonCode) {
@@ -32,7 +28,7 @@ export function doubleClick (eventButtonCode) {
 export function toggle ({ button = 'left', pressed = true }) {
   socket.emit(c.WS_MOUSE_TOGGLE, { button, pressed })
   return {
-    type: c.KEY_MOUSE_TOGGLE,
+    type: c.MOUSE_TOGGLE,
     payload: { button, pressed }
   }
 }

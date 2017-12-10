@@ -5,8 +5,10 @@
         "browsers": ["last 2 versions", "safari >= 7"]
       }
     }],
-    "transform-object-rest-spread",
-    "transform-class-properties",
     "react"
+  ],
+  "plugins": [
+    "transform-object-rest-spread",
+    "transform-class-properties"
   ]
 }

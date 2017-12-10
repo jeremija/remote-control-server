@@ -1,11 +1,12 @@
+import Immutable from 'seamless-immutable'
 import React from 'react'
 import {
   KeyboardActions,
   MouseActions,
   ViewActions,
-  PropTypes,
   keyboard,
-  mouse
+  mouse,
+  view
 } from '../PropTypes'
 
 import Arrows from './Arrows'
@@ -13,22 +14,22 @@ import Buttons from './Buttons'
 import Input from './Input'
 // import Log from './log.js'
 import Mouse from './Mouse'
-import Navbar from './Navbar'
+import Nav from './Nav'
 
-const VIEWS = {
+export const VIEWS = Immutable({
   mouse: Mouse,
-  arrows: Arrows,
-  log: () => <div>Not implemented</div>
-}
+  arrows: Arrows
+  // log: () => <div>Not implemented</div>
+})
 
-class App extends React.PureComponent {
+export default class App extends React.PureComponent {
   static propTypes = {
-    view: PropTypes.string.isRequired,
     KeyboardActions,
     MouseActions,
     ViewActions,
     keyboard,
-    mouse
+    mouse,
+    view
   }
   render () {
     const {
@@ -39,10 +40,11 @@ class App extends React.PureComponent {
       keyboard,
       mouse
     } = this.props
-    const View = VIEWS[view]
+    const View = VIEWS[view.activeView]
 
     return (<div className='app'>
-      <Navbar
+      <Nav
+        onChange={ViewActions.setView}
         ViewActions={ViewActions}
       />
       <View
@@ -56,10 +58,8 @@ class App extends React.PureComponent {
         handleMouseToggle={MouseActions.toggle}
       />
       <Input
-        onType={KeyboardActions.type}
+        onType={KeyboardActions.press}
       />
     </div>)
   }
 }
-
-export default App

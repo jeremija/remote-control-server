@@ -1,5 +1,5 @@
 import Immutable from 'seamless-immutable'
-import { MOUSE_BUTTON_PRESS } from '../../constants'
+import { MOUSE_TOGGLE } from '../../constants'
 
 const mouseState = Immutable({
   left: false,
@@ -9,9 +9,9 @@ const mouseState = Immutable({
 
 export function mouse (state = mouseState, action) {
   switch (action && action.type) {
-    case MOUSE_BUTTON_PRESS:
+    case MOUSE_TOGGLE:
       const { button, pressed } = action.payload
-      return state.setIn(button, !!pressed)
+      return state.setIn([ button ], !!pressed)
     default:
       return state
   }

@@ -2,11 +2,15 @@ import { MouseActions } from '../PropTypes'
 import React from 'react'
 import _ from 'lodash'
 
+export const DEFAULT_THROTTLE = 10
+export const MIN_SCROLL_OFFSET = 5
+export const MIN_TOUCH_DURATION = 50
+
 export default class Mouse extends React.PureComponent {
   static propTypes = {
     MouseActions
   }
-  constructor ({ throttle = 10 }) {
+  constructor ({ throttle = DEFAULT_THROTTLE }) {
     super()
     this.lastX = null
     this.lastY = null
@@ -31,7 +35,7 @@ export default class Mouse extends React.PureComponent {
     const x = posX - this.lastX
     const y = posY - this.lastY
 
-    if (scroll && Math.abs(y) < 5) return
+    if (scroll && Math.abs(y) < MIN_SCROLL_OFFSET) return
 
     this.lastX = posX
     this.lastY = posY
@@ -41,19 +45,19 @@ export default class Mouse extends React.PureComponent {
   handleMouseMove = ({ clientX, clientY }) => {
     this.handleMouse(clientX, clientY)
   }
-  handleTouchStart = (event) => {
+  handleTouchStart = event => {
     event.persist()
     const touch = event.touches[0]
     this.lastX = touch.clientX
     this.lastY = touch.clientY
 
     clearTimeout(this.timeout)
-    this.timeout = setTimeout(() => event.preventDefault(), 50)
+    this.timeout = setTimeout(() => event.preventDefault(), MIN_TOUCH_DURATION)
   }
   handleTouchEnd = () => {
     clearTimeout(this.timeout)
   }
-  _handleTouchMove = (event) => {
+  _handleTouchMove = event => {
     event.preventDefault()
     const touch = event.touches[0]
     const scroll = event.touches.length > 1
@@ -61,7 +65,7 @@ export default class Mouse extends React.PureComponent {
   }
   render () {
     return (
-      <div className='mousepad'
+      <div className='view-mouse'
         onClick={this.handleClick}
         onDoubleClick={this.handleDoubleClick}
         onMouseEnter={this.handleMouseEnter}
