@@ -1,11 +1,11 @@
-@import "fonts.less";
+@import "_fonts.scss";
 
-@color-bg: #086788;
-@color-fg: #07A0C3;
-// @color-btn: #F0C808;
-@color-btn: #FFF1D0;
-@color-active: #F0C808;
-@icon-size: 48px;
+$color-bg: #086788;
+$color-fg: #07A0C3;
+// $color-btn: #F0C808;
+$color-btn: #FFF1D0;
+$color-active: #F0C808;
+$icon-size: 48px;
 
 * {
   box-sizing: border-box;
@@ -17,8 +17,8 @@ html, body {
 
 body {
   height: 100%;
-  background-color: @color-bg;
-  color: @color-fg;
+  background-color: $color-bg;
+  color: $color-fg;
   margin: 0 0;
   font-family: sans-serif;
 }
@@ -52,18 +52,18 @@ body {
     }
 
     li.active {
-      color: @color-active;
+      color: $color-active;
     }
   }
 
-  .panel() {
+  @mixin panel {
     -webkit-box-flex: 2;
     -ms-flex: 2;
     flex: 2;
   }
 
   .blank {
-    .panel();
+    @include panel;
   }
 
   .log {
@@ -71,63 +71,63 @@ body {
     code {
       display: block;
     }
-    .panel();
+    @include panel;
   }
 
   .arrows {
-    .panel();
+    @include panel;
     position: relative;
-	display: flex;
-	display: -webkit-box;
-	display: -ms-flexbox;
-	-webkit-box-align: center;
-	-ms-flex-align: center;
-	align-items: center;
-	-webkit-box-pack: center;
-	-ms-flex-pack: center;
-	justify-content: center;
+    display: flex;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
 
-    @btn-size: 80px;
-    @btn-margin: 10px;
+    $btn-size: 80px;
+    $btn-margin: 10px;
 
     .buttons {
-	  display: inline-block;
-      background-color: @color-bg;
-	  .panel();
+      display: inline-block;
+      background-color: $color-bg;
+      @include panel;
       text-align: center;
-      width: @btn-size * 3 + @btn-margin * 6;
+      width: $btn-size * 3 + $btn-margin * 6;
 
       span {
         cursor: pointer;
         text-align: center;
         display: inline-block;
         font-size: 36px;
-        width: @btn-size;
-        height: @btn-size;
-        margin: @btn-margin;
-        line-height: @btn-size + 1;
+        width: $btn-size;
+        height: $btn-size;
+        margin: $btn-margin;
+        line-height: $btn-size + 1;
         border-radius: 25%;
-        color: @color-btn;
-        background-color: @color-active;
+        color: $color-btn;
+        background-color: $color-active;
         transition: background-color ease-in 200ms;
         -webkit-transition: background-color ease-in 200ms;
 
         &:hover,
         &:active{
-          background-color: darken(@color-active, 5%);
+          background-color: darken($color-active, 5%);
         }
       }
 
       span.escape,
       span.backspace,
       span.ok {
-        color: @color-btn;
+        color: $color-btn;
         background-color: transparent;
 
         &:hover,
         &:active{
-          color: @color-fg;
-          background-color: @color-btn;
+          color: $color-fg;
+          background-color: $color-btn;
         }
       }
 
@@ -139,12 +139,12 @@ body {
   }
 
   .mousepad {
-    .panel();
+    @include panel;
     position: relative;
 
     .icon {
-      font-size: @icon-size;
-      margin-top: -@icon-size;
+      font-size: $icon-size;
+      margin-top: -$icon-size;
       position: absolute;
       text-align: center;
       top: 50%;
@@ -161,38 +161,38 @@ body {
       -ms-user-select: none;
       user-select: none;
       display: inline-block;
-      background-color: @color-bg;
+      background-color: $color-bg;
       border: none;
-      color: @color-fg;
+      color: $color-fg;
       margin-bottom: 0.5em;
       font-size: 16px;
       cursor: pointer;
       padding: 0.5em;
     }
     span.active {
-      background-color: @color-btn;
+      background-color: $color-btn;
     }
   }
 
   input {
     display: -webkit-box;
-	display: -ms-flexbox;
-	display: flex;
+    display: -ms-flexbox;
+    display: flex;
     min-height: 30px;
 
     width: 100%;
-    background-color: @color-bg;
+    background-color: $color-bg;
     border: none;
-    border-top: 5px dashed @color-fg;
+    border-top: 5px dashed $color-fg;
     padding: 0.5em;
     text-align: center;
-    color: @color-fg;
+    color: $color-fg;
     font-size: 1.5em;
     font-family: "icons";
-    font-size: @icon-size;
+    font-size: $icon-size;
   }
 
   input::-webkit-input-placeholder {
-    color: @color-fg;
+    color: $color-fg;
   }
 }

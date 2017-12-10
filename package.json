@@ -15,10 +15,10 @@
     "test:coverage": "jest --coverage",
     "test:watch": "jest --watch",
     "build": "npm run css && npm run js",
-    "js": "browserify -t babelify ./src/client/index.js -o ./build/index.js",
-    "js:watch": "watchify -d -v -t babelify ./src/client/index.js -o ./build/index.js",
-    "css": "node-sass ./src/scss/style.scss -o ./build/",
-    "css:watch": "npm run css && node-sass --watch ./src/scss/style.scss -o ./build/",
+    "js": "browserify -t babelify src/client/index.js -o src/res/index.js",
+    "js:watch": "watchify -d -v -t babelify src/client/index.js -o src/res/index.js",
+    "css": "node-sass src/scss/style.scss -o src/res",
+    "css:watch": "npm run css && node-sass --watch src/scss/style.scss -o src/res",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "ci": "npm run lint && npm run test:coverage && npm run build"
@@ -46,6 +46,7 @@
     "eslint": "^4.13.0",
     "eslint-plugin-react": "^7.5.1",
     "jest-cli": "^21.2.1",
+    "node-sass": "^4.7.2",
     "nodemon": "^1.12.5",
     "watchify": "^3.9.0"
   },
