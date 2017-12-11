@@ -50,6 +50,7 @@
     "babel-preset-env": "^1.6.1",
     "babel-preset-react": "^6.3.13",
     "babelify": "^8.0.0",
+    "browserify": "^14.5.0",
     "chastifol": "^4.1.0",
     "eslint": "^4.13.0",
     "eslint-config-standard": "^10.2.1",
