@@ -3,3 +3,5 @@
 node_modules/
 config.js
 coverage/
+src/res/*.js
+src/res/*.css

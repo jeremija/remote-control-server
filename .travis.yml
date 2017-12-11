@@ -1,7 +1,10 @@
 language: node_js
 node_js:
-  - "5.1.0"
-script: make
+  - "9"
+script:
+  - npm run lint
+  - npm run test:coverage
+  - npm run build
 env:
   - CXX=g++-4.8
 notifications:
