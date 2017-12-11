@@ -1,6 +1,6 @@
 import * as c from '../../constants'
 import App from './App'
-import Mouse, { MIN_SCROLL_THRESHOLD } from '../components/Mouse'
+import Mouse from '../components/Mouse'
 import React from 'react'
 import ReactDOM from 'react-dom'
 import TestUtils from 'react-dom/test-utils'
