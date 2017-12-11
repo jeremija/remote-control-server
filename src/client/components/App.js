@@ -44,6 +44,7 @@ export default class App extends React.PureComponent {
 
     return (<div className='app'>
       <Nav
+        activeView={view.activeView}
         onChange={ViewActions.setView}
         ViewActions={ViewActions}
       />

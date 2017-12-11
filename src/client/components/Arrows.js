@@ -60,15 +60,17 @@ export default class Arrows extends React.PureComponent {
     const { KeyboardActions } = this.props
     return (
       <div className='view-arrows'>
-        {BUTTONS.map((button, i) => (
-          <Button
-            className={button.className}
-            code={button.code}
-            key={i}
-            onClick={KeyboardActions.press}
-            label={button.text}
-          />
-        ))}
+        <div className='buttons'>
+          {BUTTONS.map((button, i) => (
+            <Button
+              className={button.className}
+              code={button.code}
+              key={i}
+              onClick={KeyboardActions.press}
+              label={button.text}
+            />
+          ))}
+        </div>
       </div>
     )
   }

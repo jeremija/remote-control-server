@@ -45,7 +45,7 @@ export default class Buttons extends React.PureComponent {
     } = this.props
 
     return (
-      <div className='buttons'>
+      <div className='view-buttons'>
         {BUTTONS.map(buttonName => (
           <Button
             key={buttonName}

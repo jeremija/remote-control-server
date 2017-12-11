@@ -15,6 +15,10 @@ html, body {
   height: 100%;
 }
 
+button::-moz-focus-inner {
+  border: 0;
+}
+
 body {
   height: 100%;
   background-color: $color-bg;
@@ -39,20 +43,27 @@ body {
   -ms-flex-direction: column;
   flex-direction: column;
 
-  .navbar {
-    padding: 0 0 0 0.25em;
-    margin: 0;
+  nav {
+    & > ul {
+      padding: 0 0 0 0.25em;
+      margin: 0;
 
-    li {
-      display: inline-block;
-      padding: 0.5em 0.25em;
-      font-size: 32px;
-      cursor: pointer;
-      z-index: 1;
-    }
+      & > li {
+        display: inline-block;
+      }
 
-    li.active {
-      color: $color-active;
+      & > li > button {
+        border: none;
+        background-color: $color-bg;
+        font-size: 32px;
+        cursor: pointer;
+        padding: 0.5em 0.25em;
+
+        &.active {
+          color: $color-active;
+        }
+      }
+
     }
   }
 
@@ -74,7 +85,7 @@ body {
     @include panel;
   }
 
-  .arrows {
+  .view-arrows {
     @include panel;
     position: relative;
     display: flex;
@@ -97,7 +108,7 @@ body {
       text-align: center;
       width: $btn-size * 3 + $btn-margin * 6;
 
-      span {
+      button {
         cursor: pointer;
         text-align: center;
         display: inline-block;
@@ -108,6 +119,7 @@ body {
         line-height: $btn-size + 1;
         border-radius: 25%;
         color: $color-btn;
+        border: none;
         background-color: $color-active;
         transition: background-color ease-in 200ms;
         -webkit-transition: background-color ease-in 200ms;
@@ -118,9 +130,9 @@ body {
         }
       }
 
-      span.escape,
-      span.backspace,
-      span.ok {
+      button.escape,
+      button.backspace,
+      button.ok {
         color: $color-btn;
         background-color: transparent;
 
@@ -131,14 +143,14 @@ body {
         }
       }
 
-      span.empty-space {
-        background-color: transparent;
+      button.empty-space {
+        visibility: hidden;
       }
     }
 
   }
 
-  .mousepad {
+  .view-mouse {
     @include panel;
     position: relative;
 
@@ -153,9 +165,9 @@ body {
     }
   }
 
-  .button-toggles {
+  .view-buttons {
     text-align: center;
-    span {
+    button {
       -webkit-user-select: none;
       -moz-user-select: none;
       -ms-user-select: none;
@@ -169,7 +181,7 @@ body {
       cursor: pointer;
       padding: 0.5em;
     }
-    span.active {
+    button.pressed {
       background-color: $color-btn;
     }
   }

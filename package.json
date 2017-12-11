@@ -9,7 +9,7 @@
   },
   "scripts": {
     "start": "node src/index.js",
-    "start:server": "nodemon src/index.js --ignore build/ --ignore src/client",
+    "start:server": "nodemon src/index.js -i src/client -i src/scss -i src/res",
     "start:watch": "chastifol [ npm run js:watch ] [ npm run css:watch ] [ npm run start:server ]",
     "test": "jest",
     "test:coverage": "jest --coverage",

@@ -8,9 +8,9 @@ const VIEWS = [{
 }, {
   icon: 'icon-arrows',
   name: 'arrows'
-}, {
-  icon: 'icon-logs',
-  name: 'log'
+// }, {
+//   icon: 'icon-logs',
+//   name: 'log'
 }]
 
 class NavButton extends React.PureComponent {
@@ -40,27 +40,29 @@ class NavButton extends React.PureComponent {
 export default class Nav extends React.PureComponent {
   static propTypes = {
     onChange: PropTypes.func.isRequired,
-    activeView: PropTypes.oneOf(VIEWS.map(view => view.name))
+    activeView: PropTypes.oneOf(VIEWS.map(view => view.name)).isRequired
   }
   render () {
     const { activeView, onChange } = this.props
 
     return (
-      <ul>
-        {VIEWS.map(view => {
-          const active = view.name === activeView
-          return (
-            <li key={view.name}>
-              <NavButton
-                active={active}
-                onClick={onChange}
-                name={view.name}
-                icon={view.icon}
-              />
-            </li>
-          )
-        })}
-      </ul>
+      <nav>
+        <ul>
+          {VIEWS.map(view => {
+            const active = view.name === activeView
+            return (
+              <li key={view.name}>
+                <NavButton
+                  active={active}
+                  onClick={onChange}
+                  name={view.name}
+                  icon={view.icon}
+                />
+              </li>
+            )
+          })}
+        </ul>
+      </nav>
     )
   }
 }
