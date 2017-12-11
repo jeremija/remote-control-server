@@ -14,17 +14,19 @@ class Button extends React.PureComponent {
     pressed: PropTypes.bool.isRequired,
     type: PropTypes.string.isRequired
   }
-  handleClick = () => {
+  handleClick = event => {
+    event.preventDefault()
     const { onClick, type, name, pressed } = this.props
     const payload = { [type]: name, pressed: !pressed }
     onClick(payload)
+    return false
   }
   render () {
     const { name, label, pressed, type } = this.props
     return (
       <button
         className={classnames(type, name, { pressed })}
-        onClick={this.handleClick}
+        onMouseDown={this.handleClick}
       >
         {label}
       </button>

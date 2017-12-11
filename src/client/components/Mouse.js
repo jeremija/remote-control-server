@@ -42,7 +42,8 @@ export default class Mouse extends React.PureComponent {
 
     MouseActions.move({ x, y, scroll })
   }
-  handleMouseMove = ({ clientX, clientY }) => {
+  handleMouseMove = event => {
+    const { clientX, clientY } = event
     this.handleMouse(clientX, clientY)
   }
   handleTouchStart = event => {

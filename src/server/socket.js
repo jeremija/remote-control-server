@@ -23,9 +23,9 @@ module.exports = function (socket, robot) {
     robot.moveMouse(X + x, Y + y)
   }
 
-  function scrollMouse (pos) {
-    const direction = pos.y > 0 ? 'down' : 'up'
-    robot.scrollMouse(1, direction)
+  function scrollMouse ({ x, y }) {
+    y = y > 0 ? 1 : -1
+    robot.scrollMouse(0, y)
   }
 
   socket.on(c.WS_MOUSE_MOVE, ({ x, y, scroll }) => {
@@ -56,9 +56,12 @@ module.exports = function (socket, robot) {
     let specialKey = KEY_MAPPING[code]
     if (string) {
       robot.typeString(string)
-    }
-    if (specialKey) {
+    } else if (specialKey) {
       robot.keyTap(specialKey)
+    } else {
+      // Hack for android where key code is always 229. We use the backspace
+      // when the string is empty.
+      robot.keyTap('backspace')
     }
 
     if (alt) robot.keyToggle('alt', 'up')

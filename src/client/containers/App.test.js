@@ -296,7 +296,7 @@ describe('containers/App', () => {
       it(`toggles ${button} mouse button`, () => {
         const btn = node.querySelector('.button.' + button)
         ;[true, false].forEach(pressed => {
-          TestUtils.Simulate.click(btn)
+          TestUtils.Simulate.mouseDown(btn)
           expectSocketMessage(c.WS_MOUSE_TOGGLE, {
             button,
             pressed
@@ -310,7 +310,7 @@ describe('containers/App', () => {
       it(`toggles ${key} key`, () => {
         const btn = node.querySelector('.key.' + key)
         ;[true, false].forEach(pressed => {
-          TestUtils.Simulate.click(btn)
+          TestUtils.Simulate.mouseDown(btn)
           expectSocketMessage(c.WS_KEY_TOGGLE, {
             key,
             pressed

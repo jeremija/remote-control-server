@@ -39,6 +39,7 @@ describe('socket', () => {
       })
       expect(robot.typeString.mock.calls).toEqual([[ 't' ]])
     })
+
     Object.keys(KEY_MAPPING).forEach(code => {
       it(`sends special key codes: ${code}`, () => {
         SocketActions.keyPress({ code })
@@ -47,6 +48,15 @@ describe('socket', () => {
         expect(robot.keyTap.mock.calls).toEqual([[ key ]])
         robot.keyTap.mockClear()
       })
+    })
+
+    it('sends backspace when no special key and empty string', () => {
+      // hack for android
+      SocketActions.keyPress({
+        string: '',
+        keyCode: 229
+      })
+      expect(robot.keyTap.mock.calls).toEqual([[ 'backspace' ]])
     })
 
     const MODIFIER_MAPPING = {
@@ -111,12 +121,12 @@ describe('socket', () => {
 
     it('scrolls up when scroll = true and direction positive', () => {
       SocketActions.mouseMove({ x: 0, y: 1, scroll: true })
-      expect(robot.scrollMouse.mock.calls).toEqual([[ 1, 'down' ]])
+      expect(robot.scrollMouse.mock.calls).toEqual([[ 0, 1 ]])
     })
 
     it('scrolls down when scroll = false and direction negative', () => {
       SocketActions.mouseMove({ x: 0, y: -1, scroll: true })
-      expect(robot.scrollMouse.mock.calls).toEqual([[ 1, 'up' ]])
+      expect(robot.scrollMouse.mock.calls).toEqual([[ 0, -1 ]])
     })
 
   })

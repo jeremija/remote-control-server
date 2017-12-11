@@ -12,6 +12,7 @@ $icon-size: 48px;
 }
 
 html, body {
+  overflow-y: hidden;
   height: 100%;
 }
 
@@ -55,6 +56,7 @@ body {
       & > li > button {
         border: none;
         background-color: $color-bg;
+        color: $color-btn;
         font-size: 32px;
         cursor: pointer;
         padding: 0.5em 0.25em;
@@ -154,6 +156,13 @@ body {
     @include panel;
     position: relative;
 
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+
     .icon {
       font-size: $icon-size;
       margin-top: -$icon-size;
@@ -168,7 +177,9 @@ body {
   .view-buttons {
     text-align: center;
     button {
+      -webkit-touch-callout: none;
       -webkit-user-select: none;
+      -khtml-user-select: none;
       -moz-user-select: none;
       -ms-user-select: none;
       user-select: none;

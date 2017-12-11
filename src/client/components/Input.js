@@ -20,7 +20,10 @@ export default class Input extends React.PureComponent {
   render () {
     return (
       <div className='input'>
-        <input onKeyUp={this.handleKeyUp}
+        <input
+          autoComplete='off'
+          onKeyUp={this.handleKeyUp}
+          onKeyPress={this.handleKeyUp}
           placeholder={String.fromCharCode(parseInt('e803', 16))}
           type='text'
         />
