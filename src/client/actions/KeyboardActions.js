@@ -1,12 +1,12 @@
-const c = require('../../constants')
-const socket = require('../socket')
+import * as SocketActions from './SocketActions'
+import * as c from '../../constants'
 
 export function press ({ alt, ctrl, shift, meta, code, string }) {
-  socket.emit(c.WS_KEY_PRESS, { alt, ctrl, shift, meta, code, string })
+  SocketActions.keyPress({ alt, ctrl, shift, meta, code, string })
 }
 
-export function toggle ({ key, pressed = true }) {
-  socket.emit(c.WS_KEY_TOGGLE, { key, pressed })
+export function toggle ({ key, pressed }) {
+  SocketActions.keyToggle({ key, pressed })
   return {
     type: c.KEYBOARD_TOGGLE,
     payload: { key, pressed }

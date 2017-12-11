@@ -1,6 +1,6 @@
 import * as c from '../../constants'
 import App from './App'
-import Mouse from '../components/Mouse'
+import Mouse, { MIN_SCROLL_THRESHOLD } from '../components/Mouse'
 import React from 'react'
 import ReactDOM from 'react-dom'
 import TestUtils from 'react-dom/test-utils'
@@ -234,6 +234,7 @@ describe('containers/App', () => {
           y: 30 - 16
         })
       })
+
       it('scrolls when multiple touches', () => {
         TestUtils.Simulate.touchMove(mouse, {
           touches: [{
@@ -249,6 +250,19 @@ describe('containers/App', () => {
           x: 20 - 15,
           y: 30 - 16
         })
+      })
+
+      it('does nothing when scroll below threshold', () => {
+        TestUtils.Simulate.touchMove(mouse, {
+          touches: [{
+            clientX: 20,
+            clientY: 13
+          }, {
+            clientX: 0,
+            clientY: 13
+          }]
+        })
+        expect(socket.emit.mock.calls.length).toBe(0)
       })
     })
 

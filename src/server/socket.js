@@ -1,6 +1,7 @@
 const c = require('../constants')
+const Immutable = require('seamless-immutable')
 
-const keyMapping = {
+const KEY_MAPPING = Immutable({
   9: 'tab',
   8: 'backspace',
   13: 'enter',
@@ -9,7 +10,7 @@ const keyMapping = {
   38: 'up',
   39: 'right',
   40: 'down'
-}
+})
 
 const pressedToState = {
   true: 'down',
@@ -17,21 +18,15 @@ const pressedToState = {
 }
 
 module.exports = function (socket, robot) {
-  function moveMouse (pos) {
-    let mouse = robot.getMousePos()
-    let x = mouse.x + pos.x
-    let y = mouse.y + pos.y
-    robot.moveMouse(x, y)
+  function moveMouse ({ x, y }) {
+    const { x: X, y: Y } = robot.getMousePos()
+    robot.moveMouse(X + x, Y + y)
   }
 
   function scrollMouse (pos) {
-    let direction = pos.y > 0 ? 'down' : 'up'
+    const direction = pos.y > 0 ? 'down' : 'up'
     robot.scrollMouse(1, direction)
   }
-
-  socket.on(c.WS_KEY_TAP, key => {
-    robot.keyTap(key)
-  })
 
   socket.on(c.WS_MOUSE_MOVE, ({ x, y, scroll }) => {
     if (!scroll) {
@@ -41,8 +36,8 @@ module.exports = function (socket, robot) {
     scrollMouse({ x, y })
   })
 
-  socket.on(c.WS_MOUSE_CLICK, params => {
-    robot.mouseClick(params.button, params.double)
+  socket.on(c.WS_MOUSE_CLICK, ({ button, double }) => {
+    robot.mouseClick(button, double)
   })
 
   socket.on(c.WS_KEY_PRESS, action => {
@@ -58,7 +53,7 @@ module.exports = function (socket, robot) {
     if (shift) robot.keyToggle('shift', 'down')
     if (meta) robot.keyToggle('command', 'down')
 
-    let specialKey = keyMapping[code]
+    let specialKey = KEY_MAPPING[code]
     if (string) {
       robot.typeString(string)
     }
@@ -84,3 +79,5 @@ module.exports = function (socket, robot) {
     robot.mouseToggle(state, button)
   })
 }
+
+module.exports.KEY_MAPPING = KEY_MAPPING

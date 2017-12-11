@@ -1,5 +1,2 @@
-let SocketIOClient = require('socket.io-client')
-
-let socket = new SocketIOClient()
-
-module.exports = socket
+const SocketIOClient = require('socket.io-client')
+module.exports = new SocketIOClient()

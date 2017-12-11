@@ -3,7 +3,7 @@ import React from 'react'
 import _ from 'lodash'
 
 export const DEFAULT_THROTTLE = 10
-export const MIN_SCROLL_OFFSET = 5
+export const MIN_SCROLL_THRESHOLD = 5
 export const MIN_TOUCH_DURATION = 50
 
 export default class Mouse extends React.PureComponent {
@@ -35,7 +35,7 @@ export default class Mouse extends React.PureComponent {
     const x = posX - this.lastX
     const y = posY - this.lastY
 
-    if (scroll && Math.abs(y) < MIN_SCROLL_OFFSET) return
+    if (scroll && Math.abs(y) < MIN_SCROLL_THRESHOLD) return
 
     this.lastX = posX
     this.lastY = posY

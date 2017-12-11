@@ -2,7 +2,11 @@ import logger from 'redux-logger'
 import reducers from './reducers'
 import { applyMiddleware, createStore as _createStore } from 'redux'
 
-const DEBUG_ENABLED = window.localStorage && window.localStorage.log
+export function isDebugEnabled (window) {
+  return !!(window.localStorage && window.localStorage.log)
+}
+
+const DEBUG_ENABLED = isDebugEnabled(window)
 
 export function createMiddlewares (debug = DEBUG_ENABLED) {
   const m = []
