@@ -27,7 +27,6 @@
   "license": "MIT",
   "dependencies": {
     "classnames": "^2.2.5",
-    "debug": "^3.1.0",
     "express": "^4.16.2",
     "lodash": "^4.17.4",
     "prop-types": "^15.6.0",
