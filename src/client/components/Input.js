@@ -21,11 +21,10 @@ export default class Input extends React.PureComponent {
     return (
       <div className='input'>
         <input
-          autoComplete='off'
+          autoComplete='new-password'
           onKeyUp={this.handleKeyUp}
-          onKeyPress={this.handleKeyUp}
           placeholder={String.fromCharCode(parseInt('e803', 16))}
-          type='text'
+          type='password'
         />
       </div>
     )
