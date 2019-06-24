@@ -26,6 +26,7 @@ or use from git source:
 ```bash
 git clone https://github.com/jeremija/remote-control-server.git
 cd node-mobile-remote
+npm run build
 npm install
 npm start
 ```
